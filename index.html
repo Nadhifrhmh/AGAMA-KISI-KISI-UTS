@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edisi Khusus UTS Agama Islam — Nadhif Rahman Hakim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Fraunces', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        arabic: ['Amiri', 'serif']
+                    },
+                    colors: {
+                        paper: '#F7F4EB',
+                        ink: '#111615',
+                        emeraldMag: '#0B4F3F',
+                        goldMag: '#D97706',
+                        coralMag: '#E11D48',
+                        indigoMag: '#312E81'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F7F4EB;
+            color: #111615;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .mag-border {
+            border: 2px solid #111615;
+        }
+        .mag-shadow {
+            box-shadow: 5px 5px 0px #111615;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .mag-shadow:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px #111615;
+        }
+        .mag-shadow-sm {
+            box-shadow: 3px 3px 0px #111615;
+        }
+        .dropcap::first-letter {
+            float: left;
+            font-family: 'Fraunces', serif;
+            font-size: 3.6rem;
+            line-height: 0.85;
+            padding-top: 4px;
+            padding-right: 10px;
+            padding-bottom: 2px;
+            font-weight: 900;
+            color: #0B4F3F;
+        }
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            line-height: 2.1;
+        }
+        /* Print PDF Optimization */
+        @media print {
+            body {
+                background-color: #FFFFFF !important;
+                color: #000000 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-break {
+                page-break-inside: avoid;
+                margin-bottom: 1.5rem;
+            }
+            .mag-shadow, .mag-shadow-sm {
+                box-shadow: none !important;
+                transform: none !important;
+            }
+            .hidden-content {
+                display: block !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
+</head>
+<body class="selection:bg-amber-300 selection:text-ink">
+
+    <nav class="sticky top-0 z-50 bg-paper/95 backdrop-blur-md border-b-2 border-ink no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+                <span class="bg-ink text-paper font-serif font-black px-3 py-1 text-lg tracking-wider rounded">UNPAM PRESS</span>
+                <span class="hidden md:inline-block text-xs font-bold uppercase tracking-widest text-emeraldMag border border-emeraldMag px-2.5 py-1 rounded-full">
+                    Edisi UTS Ganjil 2026/2027
+                </span>
+            </div>
+
+            <!-- Quick Jump Links -->
+            <div class="hidden lg:flex items-center space-x-1 text-xs font-bold uppercase tracking-wider">
+                <a href="#contekan" class="px-3 py-1.5 rounded hover:bg-amber-200 transition">⚡ Contekan Kilat</a>
+                <a href="#edisi-1" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 1</a>
+                <a href="#edisi-2" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 2</a>
+                <a href="#edisi-3" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 3</a>
+                <a href="#edisi-4" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 4</a>
+                <a href="#edisi-5" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 5</a>
+                <a href="#edisi-b" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Al-Fatihah</a>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flex items-center gap-2">
+                <button id="quizModeBtn" onclick="toggleSelfTestMode()" class="mag-border mag-shadow-sm bg-amber-300 hover:bg-amber-400 text-ink font-bold text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-eye-slash" id="quizModeIcon"></i>
+                    <span id="quizModeText">Mode Uji Hafalan: OFF</span>
+                </button>
+                <button onclick="window.print()" class="mag-border mag-shadow-sm bg-emeraldMag hover:bg-emerald-900 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span class="hidden sm:inline">Cetak / Simpan PDF</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-10">
+        <!-- Top Issue Bar -->
+        <div class="border-y-2 border-ink py-2 flex flex-wrap justify-between items-center text-xs font-extrabold uppercase tracking-widest gap-2 mb-6">
+            <span>VOL. 01 • NO. 01 • PANDUAN MASTER KISI-KISI UTS</span>
+            <span class="text-emeraldMag">MATA KULIAH: AGAMA ISLAM (2 SKS) • REGULER A</span>
+            <span>6 SOAL • 90 MENIT (15 MENIT/SOAL)</span>
+        </div>
+
+        <!-- Magazine Masthead Title -->
+        <div class="text-center mb-8">
+            <p class="text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] text-coralMag mb-2">
+                JURNAL PEMBELAJARAN & CONTEKAN STRATEGIS MAHASISWA
+            </p>
+            <h1 class="font-serif font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-ink leading-none mb-4">
+                INSIGHT ISLAMI & SOLUSI KREATIF
+            </h1>
+            <p class="max-w-3xl mx-auto text-sm sm:text-base font-medium text-stone-700 leading-relaxed">
+                Integrasi nilai ajaran Islam yang <b>religius</b> (taat beragama) dan <b>humanis</b> (memedulikan kemanusiaan) sebagai landasan berpikir, bersikap, dan merancang solusi nyata atas persoalan kehidupan manusia.
+            </p>
+        </div>
+
+        <!-- Cover Grid: Hero Visual + Student Identity Card -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            <!-- Left Cover Feature (8 cols) -->
+            <div class="lg:col-span-8 mag-border mag-shadow rounded-2xl overflow-hidden bg-emeraldMag text-paper relative flex flex-col justify-between min-h-[380px]">
+                <!-- Pure Vector Editorial Background (Zero Lag, No Ugly Fallback Text) -->
+                <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-amber-400/15 blur-2xl"></div>
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-teal-300/10 blur-2xl"></div>
+                    <svg class="absolute inset-0 w-full h-full opacity-15" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <defs>
+                            <pattern id="islamicEditorialGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+                                <path d="M40 0 L80 40 L40 80 L0 40 Z" fill="none" stroke="#F7F4EB" stroke-width="1"/>
+                                <circle cx="40" cy="40" r="18" fill="none" stroke="#FCD34D" stroke-width="1"/>
+                                <path d="M0 0 L80 80 M80 0 L0 80" stroke="#F7F4EB" stroke-width="0.5" stroke-dasharray="3,3"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#islamicEditorialGrid)" />
+                    </svg>
+                    <!-- Decorative Editorial Watermark Badge (Top Right Corner, Non-Colliding) -->
+                    <svg class="absolute right-6 top-16 w-40 h-40 text-amber-300/10 hidden sm:block" viewBox="0 0 200 200" fill="currentColor">
+                        <polygon points="100,10 126,68 190,75 142,118 155,182 100,148 45,182 58,118 10,75 74,68" />
+                    </svg>
+                </div>
+
+                <!-- Top Badges -->
+                <div class="relative z-10 p-6 sm:p-8 flex flex-wrap items-center justify-between gap-2 border-b border-white/15 bg-ink/20 backdrop-blur-xs">
+                    <span class="bg-amber-400 text-ink font-extrabold text-xs uppercase px-3.5 py-1.5 rounded-full mag-border tracking-wide">
+                        <i class="fa-solid fa-star mr-1"></i>100% Akurat Sesuai Kisi-Kisi Resmi
+                    </span>
+                    <span class="bg-ink text-amber-300 text-xs font-extrabold px-3.5 py-1.5 rounded-full border border-amber-300/40 tracking-wide">
+                        5 Soal Kasus (Level C6) + 1 Hafalan (Level C1)
+                    </span>
+                </div>
+
+                <!-- Center/Bottom Editorial Headline -->
+                <div class="relative z-10 p-6 sm:p-8 flex-grow flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/40 to-transparent">
+                    <div class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.2em] text-emerald-200 mb-2">
+                        <span class="w-6 h-0.5 bg-amber-400 inline-block"></span>
+                        <span>FOKUS UTAMA • EDISI KHUSUS MAHASISWA TI UNPAM</span>
+                    </div>
+                    <h2 class="font-serif font-black text-2xl sm:text-4xl lg:text-[40px] text-amber-300 leading-[1.15] tracking-tight mb-6 max-w-2xl">
+                        Strategi Lulus Nilai A: Pahami Konsep Dasar, Hafalkan Dalil Kunci, &amp; Rancang Solusi Logis.
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-white/20 text-xs sm:text-sm">
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/10">
+                            <span class="block text-amber-300 font-extrabold text-xs tracking-wider uppercase mb-0.5">BAGIAN A (SOAL 1–5)</span>
+                            <span class="text-stone-200 font-medium">Uraian Analisis &amp; Kreasi Solusi (C6)</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/10">
+                            <span class="block text-amber-300 font-extrabold text-xs tracking-wider uppercase mb-0.5">BAGIAN B (SOAL 6)</span>
+                            <span class="text-stone-200 font-medium">Hafalan &amp; Arti Q.S. Al-Fatihah (C1)</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/10">
+                            <span class="block text-amber-300 font-extrabold text-xs tracking-wider uppercase mb-0.5">MANAJEMEN WAKTU</span>
+                            <span class="text-stone-200 font-medium">90 Menit Total (15 Menit / Nomor)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Student Profile Card (4 cols) -->
+            <div class="lg:col-span-4 mag-border mag-shadow rounded-2xl bg-white p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between border-b-2 border-ink pb-3 mb-4">
+                        <div>
+                            <span class="text-[11px] font-extrabold uppercase tracking-widest text-emeraldMag block">KARTU IDENTITAS STUDI</span>
+                            <h3 class="font-serif font-black text-xl text-ink">UNIVERSITAS PAMULANG</h3>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-emeraldMag text-white flex items-center justify-center font-serif font-bold text-lg mag-border">
+                            NR
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 text-sm">
+                        <div class="flex justify-between py-1 border-b border-stone-200">
+                            <span class="text-stone-500 font-medium">Nama Mahasiswa</span>
+                            <span class="font-extrabold text-ink text-right">NADHIF RAHMAN HAKIM</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-stone-200">
+                            <span class="text-stone-500 font-medium">NIM</span>
+                            <span class="font-mono font-bold text-emeraldMag bg-emerald-50 px-2 rounded">261011400542</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-stone-200">
+                            <span class="text-stone-500 font-medium">Tanggal Lahir</span>
+                            <span class="font-bold text-ink">14 April 2007</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-stone-200">
+                            <span class="text-stone-500 font-medium">Program Studi</span>
+                            <span class="font-extrabold text-ink">TEKNIK INFORMATIKA S1</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-stone-200">
+                            <span class="text-stone-500 font-medium">Program / Kelas</span>
+                            <span class="font-bold text-ink">REGULER A / 01TPLP012</span>
+                        </div>
+                        <div class="flex justify-between py-1">
+                            <span class="text-stone-500 font-medium">Periode & Status</span>
+                            <span class="font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded text-xs">GANJIL 2026/2027 • AKTIF</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Tracker Interactive -->
+                <div class="mt-5 pt-4 border-t-2 border-dashed border-ink no-print">
+                    <div class="flex justify-between items-center text-xs font-extrabold mb-1.5">
+                        <span>PROGRES HAFALAN MATERI</span>
+                        <span id="progressCounter" class="text-emeraldMag">0 / 6 Selesai (0%)</span>
+                    </div>
+                    <div class="w-full h-3 bg-stone-200 rounded-full overflow-hidden mag-border">
+                        <div id="progressBar" class="h-full bg-emeraldMag transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                    <p class="text-[11px] text-stone-500 mt-1.5">
+                        Centang tombol <b>"Sudah Hafal"</b> pada setiap bab di bawah untuk melacak kesiapan ujian Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="contekan" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 print-break">
+        <div class="mag-border mag-shadow rounded-2xl bg-amber-100 p-6 sm:p-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b-2 border-ink pb-4 mb-6">
+                <div>
+                    <span class="bg-coralMag text-white font-extrabold text-xs uppercase px-2.5 py-1 rounded tracking-wider">
+                        ⚡ LEMBAR CONTEKAN KILAT (1-MINUTE CHEAT SHEET)
+                    </span>
+                    <h2 class="font-serif font-black text-2xl sm:text-4xl text-ink mt-2">
+                        Peta Kunci Hafalan 6 Soal UTS dalam Sekali Baca
+                    </h2>
+                </div>
+                <div class="no-print flex items-center gap-2">
+                    <div class="relative">
+                        <input type="text" id="searchInput" oninput="filterContent()" placeholder="Cari kata kunci / dalil..."
+                               class="mag-border rounded-lg px-3 py-2 text-xs font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-emeraldMag w-48 sm:w-60">
+                        <i class="fa-solid fa-magnifying-glass absolute right-3 top-2.5 text-stone-400 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6-Card Cheat Sheet Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Card 1 -->
+                <a href="#edisi-1" class="mag-border bg-white rounded-xl p-4 hover:bg-emerald-50 transition block">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-extrabold text-xs bg-emeraldMag text-white px-2.5 py-0.5 rounded">SOAL 1 • C6 (15 Menit)</span>
+                        <span class="text-xs font-bold text-stone-500">Lingkungan</span>
+                    </div>
+                    <h3 class="font-serif font-bold text-base text-ink mb-1">Penciptaan Manusia & Amanah Khalifah</h3>
+                    <p class="text-xs text-amber-800 font-bold mb-2"><i class="fa-solid fa-book-quran mr-1"></i>Dalil: Q.S. Al-Baqarah: 30, Ar-Rum: 41, Hud: 61</p>
+                    <p class="text-xs text-stone-700 leading-relaxed answer-block">
+                        <b>Rumus Cepat:</b> Fisik dari tanah + akal = wajib memakmurkan bumi. <b>Solusi:</b> Aplikasi Bank Sampah Digital, pelaporan limbah, & reboisasi.
+                    </p>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="#edisi-2" class="mag-border bg-white rounded-xl p-4 hover:bg-emerald-50 transition block">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-extrabold text-xs bg-emeraldMag text-white px-2.5 py-0.5 rounded">SOAL 2 • C6 (15 Menit)</span>
+                        <span class="text-xs font-bold text-stone-500">Pedoman Hidup</span>
+                    </div>
+                    <h3 class="font-serif font-bold text-base text-ink mb-1">Keterbatasan Manusia & Fungsi Agama</h3>
+                    <p class="text-xs text-amber-800 font-bold mb-2"><i class="fa-solid fa-book-quran mr-1"></i>Dalil: Q.S. Adz-Dzariyat: 56 & Al-Baqarah: 2</p>
+                    <p class="text-xs text-stone-700 leading-relaxed answer-block">
+                        <b>Rumus Cepat:</b> 4 modal (akal, perasaan, kehendak, kebebasan) sifatnya terbatas. Tanpa agama hidup hampa & rusak moral. <b>Pola:</b> Niat ibadah, etika halal-haram, usaha & doa.
+                    </p>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="#edisi-3" class="mag-border bg-white rounded-xl p-4 hover:bg-emerald-50 transition block">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-extrabold text-xs bg-emeraldMag text-white px-2.5 py-0.5 rounded">SOAL 3 • C6 (15 Menit)</span>
+                        <span class="text-xs font-bold text-stone-500">Hukum Riba</span>
+                    </div>
+                    <h3 class="font-serif font-bold text-base text-ink mb-1">Al-Qur'an & Dilema Pinjaman Berbunga</h3>
+                    <p class="text-xs text-amber-800 font-bold mb-2"><i class="fa-solid fa-book-quran mr-1"></i>Dalil: Q.S. Al-Baqarah: 275 & 280</p>
+                    <p class="text-xs text-stone-700 leading-relaxed answer-block">
+                        <b>Rumus Cepat:</b> Jual beli halal, <i>riba</i> (bunga pinjaman) haram karena menindas. <b>Solusi Kuliah:</b> Cicilan UKT 0% ke kampus, <i>Qardhul Hasan</i> (pinjaman tanpa bunga), & Zakat/Beasiswa.
+                    </p>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="#edisi-4" class="mag-border bg-white rounded-xl p-4 hover:bg-emerald-50 transition block">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-extrabold text-xs bg-emeraldMag text-white px-2.5 py-0.5 rounded">SOAL 4 • C6 (15 Menit)</span>
+                        <span class="text-xs font-bold text-stone-500">Ijtihad Medis</span>
+                    </div>
+                    <h3 class="font-serif font-bold text-base text-ink mb-1">Qiyas & Maslahah Mursalah Sperma Donor</h3>
+                    <p class="text-xs text-amber-800 font-bold mb-2"><i class="fa-solid fa-book-quran mr-1"></i>Dalil: Q.S. Al-Isra: 32 & Al-Ahzab: 4-5</p>
+                    <p class="text-xs text-stone-700 leading-relaxed answer-block">
+                        <b>Rumus Cepat:</b> <i>Qiyas</i> = satu sifat dengan zina (haram). <i>Maslahah</i> = bahaya rusaknya keturunan (<i>nasab</i>) lebih besar. <b>Solusi:</b> Bayi tabung suami-istri sah atau adopsi syar'i.
+                    </p>
+                </a>
+
+                <!-- Card 5 -->
+                <a href="#edisi-5" class="mag-border bg-white rounded-xl p-4 hover:bg-emerald-50 transition block">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-extrabold text-xs bg-emeraldMag text-white px-2.5 py-0.5 rounded">SOAL 5 • C6 (15 Menit)</span>
+                        <span class="text-xs font-bold text-stone-500">Perilaku Muslim</span>
+                    </div>
+                    <h3 class="font-serif font-bold text-base text-ink mb-1">Integrasi Akidah, Syariah, & Akhlak</h3>
+                    <p class="text-xs text-amber-800 font-bold mb-2"><i class="fa-solid fa-book-quran mr-1"></i>Dalil: Q.S. Al-Ankabut: 45</p>
+                    <p class="text-xs text-stone-700 leading-relaxed answer-block">
+                        <b>Rumus Cepat:</b> <i>Akidah</i> (akar), <i>Syariah</i> (batang), <i>Akhlak</i> (buah). Maksiat jalan terus karena ibadah hanya gerak fisik. <b>Solusi:</b> Sadar diawasi Allah (<i>Ihsan</i>) + pahami makna salat.
+                    </p>
+                </a>
+
+                <!-- Card 6 -->
+                <a href="#edisi-b" class="mag-border bg-white rounded-xl p-4 hover:bg-emerald-50 transition block">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-extrabold text-xs bg-coralMag text-white px-2.5 py-0.5 rounded">SOAL B • C1 (15 Menit)</span>
+                        <span class="text-xs font-bold text-stone-500">Wajib Hafal</span>
+                    </div>
+                    <h3 class="font-serif font-bold text-base text-ink mb-1">Hafalan & Arti Tepat Q.S. Al-Fatihah</h3>
+                    <p class="text-xs text-amber-800 font-bold mb-2"><i class="fa-solid fa-book-quran mr-1"></i>Dalil: Q.S. Al-Fatihah Ayat 1–7 (Ummul Kitab)</p>
+                    <p class="text-xs text-stone-700 leading-relaxed answer-block">
+                        <b>Rumus Cepat:</b> Ayat 1–4 = <i>Akidah</i> (Kasih sayang & Hari Pembalasan), Ayat 5 = <i>Syariah</i> (Ibadah & Doa), Ayat 6–7 = <i>Akhlak</i> (Jalan lurus orang yang diberi nikmat).
+                    </p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 pb-16">
+
+        <!-- SPREAD 01: SOAL 1 -->
+        <article id="edisi-1" class="searchable-spread mag-border mag-shadow rounded-2xl bg-white overflow-hidden print-break">
+            <!-- Top Editorial Banner -->
+            <div class="bg-emeraldMag text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink">
+                <div class="flex items-center gap-3">
+                    <span class="font-serif font-black text-2xl sm:text-3xl text-amber-300">01</span>
+                    <div>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-emerald-200 block">INDIKATOR SOAL 1 • LEVEL TAKSONOMI C6 • URAIAN (15 MENIT)</span>
+                        <h2 class="font-serif font-bold text-xl sm:text-2xl">Hakikat Penciptaan Manusia & Amanah Khalifah di Bumi</h2>
+                    </div>
+                </div>
+                <label class="no-print cursor-pointer bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-bold border border-white/30 transition">
+                    <input type="checkbox" class="topic-check accent-amber-400 w-4 h-4" onchange="updateProgress()">
+                    <span>Sudah Hafal Bab 1</span>
+                </label>
+            </div>
+
+            <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Column: Visual & Core Theory (5 cols) -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+                    <div class="mag-border rounded-xl overflow-hidden bg-emeraldMag relative group">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=900&q=80"
+                             onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                             alt="Tangan Menjaga Tanaman dan Bumi"
+                             class="w-full h-56 object-cover">
+                        <div class="hidden w-full h-56 bg-emeraldMag text-amber-300 flex flex-col items-center justify-center p-6 text-center">
+                            <i class="fa-solid fa-earth-asia text-5xl mb-3"></i>
+                            <span class="font-serif font-bold text-lg text-white">Ekoteologi &amp; Mandat Khalifah</span>
+                            <span class="text-xs text-emerald-200 mt-1">Q.S. Al-Baqarah: 30 • Q.S. Hud: 61 • Q.S. Ar-Rum: 41</span>
+                        </div>
+                        <div class="bg-ink text-paper text-xs px-3 py-2 font-medium">
+                            <i class="fa-solid fa-camera text-amber-400 mr-1.5"></i><b>Ilustrasi Kasus:</b> Manusia berasal dari tanah dan wajib memakmurkan bumi (<i>Imarah al-Ardh</i>), bukan merusaknya.
+                        </div>
+                    </div>
+
+                    <div class="bg-paper mag-border rounded-xl p-5">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-emeraldMag block mb-2">KONSEP DASAR (BAHASA SEDERHANA)</span>
+                        <p class="text-sm text-stone-800 leading-relaxed dropcap">
+                            Manusia diciptakan oleh Allah dari dua unsur utama: <b>unsur fisik dari saripati tanah</b> (Q.S. Al-Mu'minun: 12-14) dan <b>unsur ruh Ilahi</b> berupa akal pikiran serta hati nurani (Q.S. Shad: 71-72). Karena fisik manusia berasal dari bumi dan diberi akal, manusia diangkat menjadi <b>khalifah</b> (pemimpin, wakil pengelola, dan penjaga bumi), bukan pemilik mutlak yang bebas merusak lingkungan.
+                        </p>
+                    </div>
+
+                    <!-- Dalil Box -->
+                    <div class="bg-amber-50 border-2 border-amber-600 rounded-xl p-4">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-900 mb-2">
+                            <i class="fa-solid fa-bookmark mr-1"></i>3 Dalil Al-Qur'an Wajib Cantumkan di Ujian:
+                        </h4>
+                        <ul class="text-xs space-y-2 text-stone-800">
+                            <li><b>1. Q.S. Al-Baqarah Ayat 30:</b> Allah menetapkan manusia sebagai <i>khalifah</i> (pengelola dan pemimpin) di muka bumi.</li>
+                            <li><b>2. Q.S. Hud Ayat 61:</b> Dia telah menciptakan kamu dari bumi (tanah) dan meminta kamu memakmurkannya.</li>
+                            <li><b>3. Q.S. Ar-Rum Ayat 41:</b> Telah tampak kerusakan di darat dan di laut disebabkan karena perbuatan tangan manusia sendiri.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column: Exam Case, Full Answer & Mnemonic (7 cols) -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-5">
+                    <!-- Exam Question Box -->
+                    <div class="bg-stone-900 text-paper rounded-xl p-5 mag-border">
+                        <span class="bg-amber-400 text-ink font-extrabold text-[11px] uppercase px-2 py-0.5 rounded">CONTOH SOAL UJIAN KASUS 1</span>
+                        <p class="font-serif font-semibold text-base sm:text-lg mt-2 leading-snug">
+                            "Pembuangan sampah plastik dan limbah rumah tangga ke aliran sungai menyebabkan banjir serta krisis air bersih di sekitar lingkungan masyarakat dan kampus. Analisislah keterkaitan proses penciptaan manusia dengan amanah sebagai khalifah berdasarkan ayat Al-Qur'an, kemudian rancanglah proyek nyata untuk menjaga dan memakmurkan lingkungan tersebut!"
+                        </p>
+                    </div>
+
+                    <!-- Model Answer Box -->
+                    <div class="mag-border rounded-xl p-5 bg-emerald-50/50 flex-grow">
+                        <div class="flex items-center justify-between border-b border-emerald-800/20 pb-2 mb-3">
+                            <span class="font-extrabold text-xs uppercase tracking-wider text-emeraldMag">
+                                <i class="fa-solid fa-check-double mr-1"></i>JAWABAN STANDAR NILAI 100 (SIAP TULIS)
+                            </span>
+                            <button onclick="copySectionText('ans-1')" class="no-print text-xs font-bold text-emeraldMag hover:underline">
+                                <i class="fa-regular fa-copy mr-1"></i>Salin Jawaban
+                            </button>
+                        </div>
+
+                        <div id="ans-1" class="answer-block space-y-3 text-sm text-stone-800 leading-relaxed">
+                            <p>
+                                <b>1. Analisis Penciptaan & Kedudukan Khalifah:</b> Manusia diciptakan dari saripati tanah dan diperintahkan untuk memakmurkan bumi (<b>Q.S. Hud: 61</b>), serta dilengkapi akal pikiran yang menjadikan manusia sebagai <i>khalifah</i> di bumi (<b>Q.S. Al-Baqarah: 30</b>). Pencemaran sungai membuktikan pengkhianatan terhadap mandat <i>khalifah</i> akibat keserakahan manusia, sesuai peringatan <b>Q.S. Ar-Rum: 41</b> bahwa kerusakan di darat dan laut terjadi karena ulah tangan manusia.
+                            </p>
+                            <p>
+                                <b>2. Rancangan Proyek Nyata ("Program Kampus & Desa Bebas Sampah Digital"):</b>
+                            </p>
+                            <ul class="list-disc pl-5 space-y-1.5">
+                                <li><b>Edukasi Ekoteologi (Kesadaran Moral):</b> Sosialisasi warga dan mahasiswa bahwa menjaga kebersihan air adalah bagian dari iman dan membuang limbah ke sungai adalah dosa sosial.</li>
+                                <li><b>Inovasi Teknologi (Solusi Teknik Informatika):</b> Membuat aplikasi <b>Bank Sampah Pintar</b> untuk mencatat setoran sampah plastik terpilah milik warga/mahasiswa agar bisa ditukar poin tabungan, dilengkapi fitur foto pelaporan titik sampah liar.</li>
+                                <li><b>Aksi Pemulihan Lingkungan:</b> Gotong royong pembersihan sungai bulanan, pembuatan lubang resapan air (<i>biopori</i>), dan penanaman pohon produktif di bantaran sungai.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Memory Hook -->
+                    <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
+                        <div class="text-xs sm:text-sm text-ink">
+                            <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
+                            Ingat rumus <b>"TANAH – KHALIFAH – BANK SAMPAH"</b>: Tubuh dari tanah (Hud: 61) $\rightarrow$ Mandat <i>khalifah</i> (Al-Baqarah: 30) $\rightarrow$ Alam rusak karena manusia (Ar-Rum: 41) $\rightarrow$ Solusi: Aplikasi Bank Sampah & Reboisasi.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SPREAD 02: SOAL 2 -->
+        <article id="edisi-2" class="searchable-spread mag-border mag-shadow rounded-2xl bg-white overflow-hidden print-break">
+            <div class="bg-indigoMag text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink">
+                <div class="flex items-center gap-3">
+                    <span class="font-serif font-black text-2xl sm:text-3xl text-amber-300">02</span>
+                    <div>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-indigo-200 block">INDIKATOR SOAL 2 • LEVEL TAKSONOMI C6 • URAIAN (15 MENIT)</span>
+                        <h2 class="font-serif font-bold text-xl sm:text-2xl">Keterbatasan Manusia & Fungsi Agama sebagai Pedoman Hidup</h2>
+                    </div>
+                </div>
+                <label class="no-print cursor-pointer bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-bold border border-white/30 transition">
+                    <input type="checkbox" class="topic-check accent-amber-400 w-4 h-4" onchange="updateProgress()">
+                    <span>Sudah Hafal Bab 2</span>
+                </label>
+            </div>
+
+            <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Column (5 cols) -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+                    <div class="mag-border rounded-xl overflow-hidden bg-indigoMag">
+                        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=900&q=80"
+                             onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                             alt="Kompas Penunjuk Arah Hidup"
+                             class="w-full h-56 object-cover">
+                        <div class="hidden w-full h-56 bg-indigoMag text-amber-300 flex flex-col items-center justify-center p-6 text-center">
+                            <i class="fa-regular fa-compass text-5xl mb-3"></i>
+                            <span class="font-serif font-bold text-lg text-white">Agama sebagai Kompas Kehidupan</span>
+                            <span class="text-xs text-indigo-200 mt-1">Q.S. Adz-Dzariyat: 56 • Q.S. Al-Baqarah: 2</span>
+                        </div>
+                        <div class="bg-ink text-paper text-xs px-3 py-2 font-medium">
+                            <i class="fa-solid fa-compass text-amber-400 mr-1.5"></i><b>Ilustrasi Kasus:</b> Akal dan kebebasan manusia ibarat kendaraan cepat, sedangkan agama adalah peta dan rem pengamannya.
+                        </div>
+                    </div>
+
+                    <!-- 4 Potensi vs Keterbatasan Table -->
+                    <div class="bg-paper mag-border rounded-xl p-4">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-indigoMag block mb-2">4 MODAL MANUSIA VS KETERBATASANNYA</span>
+                        <div class="space-y-2 text-xs">
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>1. Akal Pikiran:</b> Mampu membuat teknologi, tapi <i>terbatas</i> tidak bisa menjangkau alam gaib & kehidupan setelah mati.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>2. Perasaan (Emosi):</b> Mampu berempati, tapi <i>mudah berubah-ubah (labil)</i> dan subjektif jika tidak dibimbing iman.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>3. Kehendak (Keinginan):</b> Mendorong maju, tapi rawan dikuasai <i>hawa nafsu serakah</i>.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>4. Kebebasan:</b> Hak memilih tindakan, tapi tanpa aturan agama akan <i>menabrak hak orang lain (anarkis)</i>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 border-2 border-amber-600 rounded-xl p-4">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-900 mb-2">
+                            <i class="fa-solid fa-bookmark mr-1"></i>Dalil Al-Qur'an Wajib Cantumkan:
+                        </h4>
+                        <ul class="text-xs space-y-1.5 text-stone-800">
+                            <li><b>1. Q.S. Adz-Dzariyat Ayat 56:</b> "Aku tidak menciptakan jin dan manusia melainkan agar mereka beribadah kepada-Ku." (Penentu tujuan hidup).</li>
+                            <li><b>2. Q.S. Al-Baqarah Ayat 2:</b> Al-Qur'an adalah kitab petunjuk (<i>hudan</i>) yang tidak ada keraguan di dalamnya bagi orang bertakwa.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column (7 cols) -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-5">
+                    <div class="bg-stone-900 text-paper rounded-xl p-5 mag-border">
+                        <span class="bg-amber-400 text-ink font-extrabold text-[11px] uppercase px-2 py-0.5 rounded">CONTOH SOAL UJIAN KASUS 2</span>
+                        <p class="font-serif font-semibold text-base sm:text-lg mt-2 leading-snug">
+                            "Manusia dianugerahi akal, perasaan, kehendak, dan kebebasan, namun banyak manusia modern yang cerdas dan makmur justru mengalami kehampaan hidup, stres berat, serta menghalalkan segala cara demi ambisi. Analisislah dampak kehidupan tanpa pedoman agama dan rancanglah prinsip/pola kehidupan berdasarkan nilai-nilai agama!"
+                        </p>
+                    </div>
+
+                    <div class="mag-border rounded-xl p-5 bg-indigo-50/50 flex-grow">
+                        <div class="flex items-center justify-between border-b border-indigo-900/20 pb-2 mb-3">
+                            <span class="font-extrabold text-xs uppercase tracking-wider text-indigoMag">
+                                <i class="fa-solid fa-check-double mr-1"></i>JAWABAN STANDAR NILAI 100 (SIAP TULIS)
+                            </span>
+                            <button onclick="copySectionText('ans-2')" class="no-print text-xs font-bold text-indigoMag hover:underline">
+                                <i class="fa-regular fa-copy mr-1"></i>Salin Jawaban
+                            </button>
+                        </div>
+
+                        <div id="ans-2" class="answer-block space-y-3 text-sm text-stone-800 leading-relaxed">
+                            <p>
+                                <b>1. Analisis Keterbatasan & Dampak Hidup Tanpa Agama:</b> Akal, perasaan, kehendak, dan kebebasan manusia bersifat relatif (tidak mutlak). Tanpa pedoman wahyu Tuhan, manusia akan mengalami:
+                            </p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><b>Kehampaan Batin (Krisis Tujuan Hidup):</b> Hidup hanya mengejar materi duniawi sesaat sehingga mudah depresi dan putus asa saat tertimpa kegagalan.</li>
+                                <li><b>Relativisme Moral (Kebenaran Sesuka Hati):</b> Kebebasan tanpa batas agama melahirkan sikap egois, kecurangan, korupsi, dan penindasan terhadap sesama.</li>
+                            </ul>
+                            <p>
+                                <b>2. Rancangan Prinsip / Pola Kehidupan Berdasarkan Nilai Islam:</b>
+                            </p>
+                            <ul class="list-disc pl-5 space-y-1.5">
+                                <li><b>Prinsip Orientasi Ibadah (<i>Tauhid</i>):</b> Menjadikan aktivitas kuliah, bekerja, dan mencari nafkah sebagai ibadah kepada Allah sesuai <b>Q.S. Adz-Dzariyat: 56</b>.</li>
+                                <li><b>Prinsip Kebebasan Bertanggung Jawab (Kendali Syariat):</b> Menggunakan akal untuk inovasi yang bermanfaat bagi manusia (<i>humanis</i>) dengan tetap patuh pada batas halal dan haram (<b>Q.S. Al-Baqarah: 2</b>).</li>
+                                <li><b>Prinsip Ketahanan Mental (<i>Ikhtiar, Doa, & Tawakal</i>):</b> Berusaha maksimal secara jujur, berdoa, bersyukur saat sukses, dan bersabar saat diuji sehingga batin selalu tenang.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
+                        <div class="text-xs sm:text-sm text-ink">
+                            <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
+                            Ingat rumus <b>"4 MODAL TERBATAS – HAMPA & LIAR – 3 POLA HIDUP"</b>: Akal/Perasaan/Kehendak/Kebebasan terbatas $\rightarrow$ Tanpa agama jadi hampa & liar $\rightarrow$ Pola: Niat ibadah (Adz-Dzariyat: 56), Etika halal-haram, Usaha + Doa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SPREAD 03: SOAL 3 -->
+        <article id="edisi-3" class="searchable-spread mag-border mag-shadow rounded-2xl bg-white overflow-hidden print-break">
+            <div class="bg-emeraldMag text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink">
+                <div class="flex items-center gap-3">
+                    <span class="font-serif font-black text-2xl sm:text-3xl text-amber-300">03</span>
+                    <div>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-emerald-200 block">INDIKATOR SOAL 3 • LEVEL TAKSONOMI C6 • URAIAN (15 MENIT)</span>
+                        <h2 class="font-serif font-bold text-xl sm:text-2xl">Al-Qur'an Sumber Hukum Islam & Solusi Dilema Pinjaman Riba</h2>
+                    </div>
+                </div>
+                <label class="no-print cursor-pointer bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-bold border border-white/30 transition">
+                    <input type="checkbox" class="topic-check accent-amber-400 w-4 h-4" onchange="updateProgress()">
+                    <span>Sudah Hafal Bab 3</span>
+                </label>
+            </div>
+
+            <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Column (5 cols) -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+                    <div class="mag-border rounded-xl overflow-hidden bg-emeraldMag">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80"
+                             onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                             alt="Perencanaan Keuangan Pendidikan Bebas Riba"
+                             class="w-full h-56 object-cover">
+                        <div class="hidden w-full h-56 bg-emeraldMag text-amber-300 flex flex-col items-center justify-center p-6 text-center">
+                            <i class="fa-solid fa-scale-balanced text-5xl mb-3"></i>
+                            <span class="font-serif font-bold text-lg text-white">Solusi Pendidikan Bebas Riba</span>
+                            <span class="text-xs text-emerald-200 mt-1">Q.S. Al-Baqarah: 275–280 • Qardhul Hasan</span>
+                        </div>
+                        <div class="bg-ink text-paper text-xs px-3 py-2 font-medium">
+                            <i class="fa-solid fa-scale-balanced text-amber-400 mr-1.5"></i><b>Ilustrasi Kasus:</b> Islam melarang <i>riba</i> agar orang yang sedang kesulitan biaya tidak semakin tertindas oleh bunga utang.
+                        </div>
+                    </div>
+
+                    <div class="bg-paper mag-border rounded-xl p-5">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-emeraldMag block mb-2">KONSEP DASAR (BAHASA SEDERHANA)</span>
+                        <p class="text-sm text-stone-800 leading-relaxed dropcap">
+                            <b>Al-Qur'an</b> adalah sumber hukum pertama dan tertinggi dalam Islam. Di dalamnya terdapat aturan tegas yang mengharamkan <b>riba</b>, yaitu tambahan nilai tagihan pada pinjaman uang yang dipersyaratkan di awal sehingga mencekik peminjam. Dalam Islam, orang yang butuh biaya pendidikan harus ditolong dengan kelonggaran, bukan dijadikan ladang mencari keuntungan bunga.
+                        </p>
+                    </div>
+
+                    <div class="bg-amber-50 border-2 border-amber-600 rounded-xl p-4">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-900 mb-2">
+                            <i class="fa-solid fa-bookmark mr-1"></i>Dalil Al-Qur'an Wajib Cantumkan:
+                        </h4>
+                        <ul class="text-xs space-y-2 text-stone-800">
+                            <li><b>1. Q.S. Al-Baqarah Ayat 275:</b> "...Allah telah menghalalkan jual beli dan mengharamkan riba..."</li>
+                            <li><b>2. Q.S. Al-Baqarah Ayat 279:</b> Prinsip pokok pinjaman Islam adalah kembali pokoknya saja: <i>"Kamu tidak menganiaya dan tidak pula dianiaya."</i></li>
+                            <li><b>3. Q.S. Al-Baqarah Ayat 280:</b> Perintah memberi tangguh waktu (kelonggaran) bagi peminjam yang sedang dalam kesulitan membayar.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column (7 cols) -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-5">
+                    <div class="bg-stone-900 text-paper rounded-xl p-5 mag-border">
+                        <span class="bg-amber-400 text-ink font-extrabold text-[11px] uppercase px-2 py-0.5 rounded">CONTOH SOAL UJIAN KASUS 3</span>
+                        <p class="font-serif font-semibold text-base sm:text-lg mt-2 leading-snug">
+                            "Seorang mahasiswa Muslim menghadapi kendala biaya kuliah dan terancam tidak bisa mengikuti ujian. Karena terdesak, ia mempertimbangkan mengambil pinjaman berbunga (pinjol/rentenir) untuk melunasi biaya pendidikan. Analisislah kasus tersebut berdasarkan ketentuan Al-Qur'an tentang riba, evaluasilah kondisi yang dihadapi, dan rumuskan alternatif penyelesaian berlandaskan Al-Qur'an!"
+                        </p>
+                    </div>
+
+                    <div class="mag-border rounded-xl p-5 bg-emerald-50/50 flex-grow">
+                        <div class="flex items-center justify-between border-b border-emerald-800/20 pb-2 mb-3">
+                            <span class="font-extrabold text-xs uppercase tracking-wider text-emeraldMag">
+                                <i class="fa-solid fa-check-double mr-1"></i>JAWABAN STANDAR NILAI 100 (SIAP TULIS)
+                            </span>
+                            <button onclick="copySectionText('ans-3')" class="no-print text-xs font-bold text-emeraldMag hover:underline">
+                                <i class="fa-regular fa-copy mr-1"></i>Salin Jawaban
+                            </button>
+                        </div>
+
+                        <div id="ans-3" class="answer-block space-y-3 text-sm text-stone-800 leading-relaxed">
+                            <p>
+                                <b>1. Analisis Hukum Berdasarkan Al-Qur'an:</b> Al-Qur'an merupakan sumber hukum utama umat Islam yang secara tegas mengharamkan segala bentuk <i>riba</i> (tambahan bunga atas pinjaman) sesuai <b>Q.S. Al-Baqarah Ayat 275–279</b>, karena mengandung unsur penindasan (<i>kezaliman</i>) terhadap orang yang sedang membutuhkan dana.
+                            </p>
+                            <p>
+                                <b>2. Evaluasi Kondisi Mahasiswa:</b> Meskipun pendidikan sangat penting, kesulitan membayar uang kuliah belum termasuk kondisi darurat mutlak yang mengancam nyawa (<i>dharurah syar'iyyah</i>) karena masih ada jalan keluar halal. Mengambil pinjaman berbunga justru akan memicu kemudaratan (bahaya) yang lebih besar berupa bunga berbunga, teror penagihan, dan gangguan fokus belajar.
+                            </p>
+                            <p>
+                                <b>3. Rumusan Alternatif Penyelesaian Berlandaskan Al-Qur'an:</b>
+                            </p>
+                            <ul class="list-disc pl-5 space-y-1.5">
+                                <li><b>Dispensasi & Cicilan Kampus 0% (Q.S. Al-Baqarah: 280):</b> Mengajukan surat permohonan resmi ke pihak universitas untuk penundaan pembayaran atau cicilan biaya kuliah tanpa bunga.</li>
+                                <li><b>Pinjaman Kebajikan Tanpa Bunga (<i>Qardhul Hasan</i> – Q.S. Al-Maidah: 2):</b> Meminjam dana talangan tanpa tambahan bunga melalui koperasi syariah kampus, keluarga, atau lembaga keuangan sosial Islam.</li>
+                                <li><b>Beasiswa & Dana Zakat Pendidikan (Q.S. At-Taubah: 60):</b> Mengajukan bantuan biaya kuliah melalui lembaga amil zakat (BAZNAS/LAZ) bagi mahasiswa yang membutuhkan (<i>fisabilillah</i>) serta bekerja paruh waktu yang halal (les privat/lepas).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
+                        <div class="text-xs sm:text-sm text-ink">
+                            <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
+                            Ingat rumus <b>"HARAM RIBA – 3 JALAN HALAL"</b>: Riba haram & menindas (Al-Baqarah: 275) $\rightarrow$ Solusi: 1. Cicilan Kampus 0% (Al-Baqarah: 280), 2. Pinjaman Tanpa Bunga (<i>Qardhul Hasan</i>), 3. Beasiswa/Zakat + Kerja Halal.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SPREAD 04: SOAL 4 -->
+        <article id="edisi-4" class="searchable-spread mag-border mag-shadow rounded-2xl bg-white overflow-hidden print-break">
+            <div class="bg-coralMag text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink">
+                <div class="flex items-center gap-3">
+                    <span class="font-serif font-black text-2xl sm:text-3xl text-amber-200">04</span>
+                    <div>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-rose-100 block">INDIKATOR SOAL 4 • LEVEL TAKSONOMI C6 • URAIAN (15 MENIT)</span>
+                        <h2 class="font-serif font-bold text-xl sm:text-2xl">Metode Ijtihad (Qiyas & Maslahah Mursalah) Kasus Sperma Donor</h2>
+                    </div>
+                </div>
+                <label class="no-print cursor-pointer bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-bold border border-white/30 transition">
+                    <input type="checkbox" class="topic-check accent-amber-400 w-4 h-4" onchange="updateProgress()">
+                    <span>Sudah Hafal Bab 4</span>
+                </label>
+            </div>
+
+            <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Column (5 cols) -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+                    <div class="mag-border rounded-xl overflow-hidden bg-coralMag">
+                        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80"
+                             onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                             alt="Laboratorium Medis dan Bioetika Islam"
+                             class="w-full h-56 object-cover">
+                        <div class="hidden w-full h-56 bg-coralMag text-amber-200 flex flex-col items-center justify-center p-6 text-center">
+                            <i class="fa-solid fa-microscope text-5xl mb-3"></i>
+                            <span class="font-serif font-bold text-lg text-white">Bioetika &amp; Penjagaan Nasab</span>
+                            <span class="text-xs text-rose-100 mt-1">Metode Qiyas &amp; Maslahah Mursalah</span>
+                        </div>
+                        <div class="bg-ink text-paper text-xs px-3 py-2 font-medium">
+                            <i class="fa-solid fa-microscope text-amber-400 mr-1.5"></i><b>Ilustrasi Kasus:</b> Islam mendukung kemajuan teknologi medis selama tidak merusak kemurnian garis keturunan (<i>Hifzhun Nasl</i>).
+                        </div>
+                    </div>
+
+                    <!-- Kamus Istilah Mudah -->
+                    <div class="bg-paper mag-border rounded-xl p-4 space-y-2.5 text-xs">
+                        <span class="font-extrabold uppercase tracking-wider text-coralMag block">KAMUS ISTILAH WAJIB PAHAM</span>
+                        <div class="p-2.5 bg-white rounded border border-stone-300">
+                            <b>1. Ijtihad:</b> Usaha sungguh-sungguh para ulama menggali hukum Islam untuk masalah zaman modern yang belum tertulis secara langsung di Al-Qur'an dan Hadis.
+                        </div>
+                        <div class="p-2.5 bg-white rounded border border-stone-300">
+                            <b>2. Qiyas (Analogi Hukum):</b> Menyamakan hukum kasus baru (sperma donor) dengan kasus lama (zina) karena punya alasan hukum (<i>'illat</i>) yang sama: masuknya benih pria asing tanpa nikah sah.
+                        </div>
+                        <div class="p-2.5 bg-white rounded border border-stone-300">
+                            <b>3. Maslahah Mursalah:</b> Menetapkan hukum berdasarkan pertimbangan manfaat umum dan pencegahan bahaya demi menjaga tujuan syariat (khususnya menjaga keturunan / <i>Hifzhun Nasl</i>).
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 border-2 border-amber-600 rounded-xl p-4">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-900 mb-1.5">
+                            <i class="fa-solid fa-bookmark mr-1"></i>Dalil & Kaidah Hukum Wajib Tulis:
+                        </h4>
+                        <p class="text-xs text-stone-800 leading-relaxed">
+                            • <b>Q.S. Al-Isra Ayat 32:</b> Larangan mendekati zina karena merusak keturunan.<br>
+                            • <b>Q.S. Al-Ahzab Ayat 4–5:</b> Perintah memanggil anak sesuai nama ayah kandung yang sah.<br>
+                            • <b>Kaidah Fikih:</b> <i>"Menolak kemudaratan (bahaya) lebih diutamakan daripada meraih kemaslahatan (manfaat)."</i>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column (7 cols) -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-5">
+                    <div class="bg-stone-900 text-paper rounded-xl p-5 mag-border">
+                        <span class="bg-amber-400 text-ink font-extrabold text-[11px] uppercase px-2 py-0.5 rounded">CONTOH SOAL UJIAN KASUS 4</span>
+                        <p class="font-serif font-semibold text-base sm:text-lg mt-2 leading-snug">
+                            "Sepasang suami istri yang belum memiliki keturunan berencana menggunakan sperma donor dari bank sperma dalam prosedur bayi tabung. Analisislah kasus ini menggunakan metode qiyas dan maslahah mursalah, evaluasilah kemaslahatan serta kemudaratannya, dan rumuskan argumentasi beserta alternatif penyelesaian hukum berdasarkan prinsip syariat Islam!"
+                        </p>
+                    </div>
+
+                    <div class="mag-border rounded-xl p-5 bg-rose-50/50 flex-grow">
+                        <div class="flex items-center justify-between border-b border-rose-900/20 pb-2 mb-3">
+                            <span class="font-extrabold text-xs uppercase tracking-wider text-coralMag">
+                                <i class="fa-solid fa-check-double mr-1"></i>JAWABAN STANDAR NILAI 100 (SIAP TULIS)
+                            </span>
+                            <button onclick="copySectionText('ans-4')" class="no-print text-xs font-bold text-coralMag hover:underline">
+                                <i class="fa-regular fa-copy mr-1"></i>Salin Jawaban
+                            </button>
+                        </div>
+
+                        <div id="ans-4" class="answer-block space-y-3 text-sm text-stone-800 leading-relaxed">
+                            <p>
+                                <b>1. Analisis Metode Qiyas:</b> Penggunaan sperma donor (dari pria yang bukan suami sah) hukumnya <b>haram</b>. Berdasarkan <i>qiyas</i>, perbuatan ini disamakan dengan <b>zina (Q.S. Al-Isra: 32)</b> karena memiliki sifat inti (<i>'illat</i>) yang sama, yaitu pembuahan rahim perempuan oleh sperma laki-laki asing di luar ikatan pernikahan yang sah.
+                            </p>
+                            <p>
+                                <b>2. Analisis Maslahah Mursalah (Evaluasi Manfaat vs Bahaya):</b>
+                            </p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><b>Kemaslahatan (Manfaat):</b> Memenuhi keinginan pasangan suami istri untuk memiliki anak.</li>
+                                <li><b>Kemudaratan (Bahaya):</b> Menghancurkan kemurnian silsilah keturunan (<i>nasab</i>), mengacaukan hukum wali nikah dan warisan, memicu guncangan mental anak, serta berisiko menyebabkan perkawinan sedarah (<i>inses</i>) antar-anak dari pendonor yang sama.</li>
+                                <li><b>Keputusan Hukum:</b> Sesuai prinsip penjagaan keturunan (<i>Hifzhun Nasl</i>), kemudaratan sperma donor jauh lebih besar daripada manfaatnya, sehingga wajib dilarang.</li>
+                            </ul>
+                            <p>
+                                <b>3. Alternatif Penyelesaian Sesuai Syariat Islam:</b>
+                            </p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><b>Bayi Tabung Homolog (Halal):</b> Melakukan pengobatan medis dan program bayi tabung yang murni menggunakan <b>sperma suami sah dan sel telur istri sah</b>, lalu ditanamkan di rahim istri tersebut.</li>
+                                <li><b>Adopsi Syar'i / Pengasuhan Anak Yatim (Q.S. Al-Ahzab: 4–5):</b> Mengangkat dan menyayangi anak asuh tanpa mengubah status nama ayah kandungnya agar aturan waris dan mahram tetap terjaga.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
+                        <div class="text-xs sm:text-sm text-ink">
+                            <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
+                            Ingat rumus <b>"QIYAS ZINA – RUSAK NASAB – BAYI TABUNG SAH"</b>: <i>Qiyas</i> = satu sifat dengan zina (Haram) $\rightarrow$ <i>Maslahah</i> = Bahaya rusak keturunan (<i>nasab</i>) lebih besar $\rightarrow$ Solusi: Bayi tabung murni suami-istri sah atau adopsi syar'i.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SPREAD 05: SOAL 5 -->
+        <article id="edisi-5" class="searchable-spread mag-border mag-shadow rounded-2xl bg-white overflow-hidden print-break">
+            <div class="bg-emeraldMag text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink">
+                <div class="flex items-center gap-3">
+                    <span class="font-serif font-black text-2xl sm:text-3xl text-amber-300">05</span>
+                    <div>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-emerald-200 block">INDIKATOR SOAL 5 • LEVEL TAKSONOMI C6 • URAIAN (15 MENIT)</span>
+                        <h2 class="font-serif font-bold text-xl sm:text-2xl">Keterkaitan Akidah, Syariah, & Akhlak dalam Perilaku Muslim</h2>
+                    </div>
+                </div>
+                <label class="no-print cursor-pointer bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-bold border border-white/30 transition">
+                    <input type="checkbox" class="topic-check accent-amber-400 w-4 h-4" onchange="updateProgress()">
+                    <span>Sudah Hafal Bab 5</span>
+                </label>
+            </div>
+
+            <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Column (5 cols) -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+                    <div class="mag-border rounded-xl overflow-hidden bg-emeraldMag">
+                        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=900&q=80"
+                             onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                             alt="Pohon Rindang Analogi Akidah Syariah Akhlak"
+                             class="w-full h-52 object-cover">
+                        <div class="hidden w-full h-52 bg-emeraldMag text-amber-300 flex flex-col items-center justify-center p-6 text-center">
+                            <i class="fa-solid fa-tree text-5xl mb-3"></i>
+                            <span class="font-serif font-bold text-lg text-white">Analogi Pohon Iman: Akar, Batang, &amp; Buah</span>
+                            <span class="text-xs text-emerald-200 mt-1">Q.S. Ibrahim: 24 • Q.S. Al-Ankabut: 45</span>
+                        </div>
+                        <div class="bg-ink text-paper text-xs px-3 py-2 font-medium">
+                            <i class="fa-solid fa-tree text-amber-400 mr-1.5"></i><b>Analogi Pohon Islam (Q.S. Ibrahim: 24):</b> <i>Akidah</i> adalah akar, <i>Syariah</i> adalah batang, dan <i>Akhlak</i> adalah buahnya.
+                        </div>
+                    </div>
+
+                    <!-- Visual Diagram 3 Pilar -->
+                    <div class="bg-paper mag-border rounded-xl p-4 space-y-2 text-xs">
+                        <span class="font-extrabold uppercase tracking-wider text-emeraldMag block">ANALOGI 3 PILAR ISLAM (MUDAH DIINGAT)</span>
+                        <div class="flex items-center gap-3 p-2 bg-white rounded border border-stone-300">
+                            <span class="w-7 h-7 rounded bg-emeraldMag text-white font-bold flex items-center justify-center shrink-0">1</span>
+                            <div><b>AKIDAH (Akar / Fondasi Iman):</b> Keyakinan hati bahwa Allah selalu hadir dan mengawasi setiap tindakan.</div>
+                        </div>
+                        <div class="flex items-center gap-3 p-2 bg-white rounded border border-stone-300">
+                            <span class="w-7 h-7 rounded bg-amber-600 text-white font-bold flex items-center justify-center shrink-0">2</span>
+                            <div><b>SYARIAH (Batang / Aturan Ibadah):</b> Pelaksanaan ibadah ritual (salat, puasa, zakat) dan aturan hukum halal-haram.</div>
+                        </div>
+                        <div class="flex items-center gap-3 p-2 bg-white rounded border border-stone-300">
+                            <span class="w-7 h-7 rounded bg-indigoMag text-white font-bold flex items-center justify-center shrink-0">3</span>
+                            <div><b>AKHLAK (Buah / Budi Pekerti):</b> Perilaku jujur, adil, dan santun kepada sesama sebagai bukti nyata ibadah.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 border-2 border-amber-600 rounded-xl p-4">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-900 mb-1.5">
+                            <i class="fa-solid fa-bookmark mr-1"></i>Dalil Al-Qur'an & Hadis Wajib Cantumkan:
+                        </h4>
+                        <p class="text-xs text-stone-800 leading-relaxed">
+                            • <b>Q.S. Al-Ankabut Ayat 45:</b> <i>"Sesungguhnya salat itu mencegah dari (perbuatan) keji dan mungkar."</i><br>
+                            • <b>Hadis Riwayat Ahmad:</b> <i>"Sesungguhnya aku (Muhammad) diutus untuk menyempurnakan akhlak yang mulia."</i>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column (7 cols) -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-5">
+                    <div class="bg-stone-900 text-paper rounded-xl p-5 mag-border">
+                        <span class="bg-amber-400 text-ink font-extrabold text-[11px] uppercase px-2 py-0.5 rounded">CONTOH SOAL UJIAN KASUS 5</span>
+                        <p class="font-serif font-semibold text-base sm:text-lg mt-2 leading-snug">
+                            "Dalam masyarakat sering ditemukan fenomena seseorang yang rajin menjalankan ibadah ritual seperti salat dan puasa, tetapi masih melakukan perbuatan maksiat seperti berbohong, menyontek, atau korupsi. Analisislah faktor kesenjangan antara ibadah dan akhlak tersebut, kemudian rumuskan solusi integratif agar akidah, syariah, dan akhlak dapat terwujud secara selaras!"
+                        </p>
+                    </div>
+
+                    <div class="mag-border rounded-xl p-5 bg-emerald-50/50 flex-grow">
+                        <div class="flex items-center justify-between border-b border-emerald-800/20 pb-2 mb-3">
+                            <span class="font-extrabold text-xs uppercase tracking-wider text-emeraldMag">
+                                <i class="fa-solid fa-check-double mr-1"></i>JAWABAN STANDAR NILAI 100 (SIAP TULIS)
+                            </span>
+                            <button onclick="copySectionText('ans-5')" class="no-print text-xs font-bold text-emeraldMag hover:underline">
+                                <i class="fa-regular fa-copy mr-1"></i>Salin Jawaban
+                            </button>
+                        </div>
+
+                        <div id="ans-5" class="answer-block space-y-3 text-sm text-stone-800 leading-relaxed">
+                            <p>
+                                <b>1. Keterkaitan Akidah, Syariah, dan Akhlak:</b> Ketiganya adalah satu kesatuan utuh. <i>Akidah</i> (keimanan hati) menjadi penggerak untuk menaati <i>syariah</i> (aturan ibadah), sedangkan <i>akhlak</i> (perilaku mulia) adalah buah nyata dari ibadah yang benar sesuai <b>Q.S. Al-Ankabut Ayat 45</b>.
+                            </p>
+                            <p>
+                                <b>2. Analisis Faktor Penyebab Kesenjangan Ibadah dan Akhlak:</b>
+                            </p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><b>Ibadah Sebatas Gugur Kewajiban (Formalitas Fisik):</b> Salat dilakukan hanya sebagai gerakan tubuh tanpa memahami makna dan nilai moral di dalamnya.</li>
+                                <li><b>Lemahnya Kesadaran Pengawasan Allah (<i>Muraqabatullah</i>):</b> <i>Akidah</i> belum menghujam ke hati sehingga pelaku tidak merasa dilihat Tuhan saat berbuat curang.</li>
+                                <li><b>Pola Pikir Sekuler dalam Beragama:</b> Memisahkan urusan ibadah di masjid dengan urusan kejujuran di kampus, kantor, atau masyarakat.</li>
+                            </ul>
+                            <p>
+                                <b>3. Solusi Integratif Penyelarasan Tiga Pilar:</b>
+                            </p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><b>Penguatan Akidah (Menanamkan Sikap <i>Ihsan</i>):</b> Melatih kesadaran batin bahwa Allah selalu melihat setiap perbuatan di mana pun berada.</li>
+                                <li><b>Penghayatan Syariah (Ibadah Bermakna):</b> Memahami arti bacaan salat dan menjadikan ibadah sebagai sarana pembersihan jiwa (<i>tazkiyatun nafs</i>).</li>
+                                <li><b>Pembiasaan & Evaluasi Akhlak (<i>Muhasabah</i>):</b> Membiasakan kejujuran dalam hal kecil, memilih lingkungan pertemanan yang baik, dan menjadikan kemanfaatan sosial sebagai ukuran keberhasilan ibadah.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
+                        <div class="text-xs sm:text-sm text-ink">
+                            <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
+                            Ingat rumus <b>"POHON ISLAM – IBADAH GERAK FISIK – SOLUSI IHSAN"</b>: Akidah (akar), Syariah (batang), Akhlak (buah) $\rightarrow$ Maksiat karena ibadah cuma formalitas fisik $\rightarrow$ Solusi: Sadar diawasi Allah (<i>Ihsan</i>) + Hayati makna salat (Al-Ankabut: 45) + Evaluasi diri (<i>Muhasabah</i>).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SPREAD 06: SOAL BAGIAN B (AL-FATIHAH) -->
+        <article id="edisi-b" class="searchable-spread mag-border mag-shadow rounded-2xl bg-white overflow-hidden print-break">
+            <div class="bg-ink text-paper px-6 py-4 flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink">
+                <div class="flex items-center gap-3">
+                    <span class="font-serif font-black text-2xl sm:text-3xl text-amber-400">06</span>
+                    <div>
+                        <span class="text-[11px] font-extrabold uppercase tracking-widest text-amber-300 block">SOAL BAGIAN B • LEVEL TAKSONOMI C1 • HAFALAN & ARTI (15 MENIT)</span>
+                        <h2 class="font-serif font-bold text-xl sm:text-2xl">Penguasaan Hafalan, Arti Tepat, & Kandungan Dasar Surat Al-Fatihah</h2>
+                    </div>
+                </div>
+                <label class="no-print cursor-pointer bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs font-bold border border-white/30 transition">
+                    <input type="checkbox" class="topic-check accent-amber-400 w-4 h-4" onchange="updateProgress()">
+                    <span>Sudah Hafal Al-Fatihah</span>
+                </label>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-6">
+                <!-- Summary of Core Meaning -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="mag-border rounded-xl p-4 bg-emerald-50">
+                        <span class="text-xs font-extrabold uppercase text-emeraldMag block mb-1">1. KANDUNGAN AKIDAH (AYAT 1–4)</span>
+                        <p class="text-xs text-stone-800 leading-relaxed">
+                            Mengajarkan keimanan bahwa Allah Maha Pengasih lagi Maha Penyayang, Pencipta dan Pemelihara seluruh alam (<i>Rabbul 'Alamin</i>), serta Pemilik mutlak Hari Pembalasan.
+                        </p>
+                    </div>
+                    <div class="mag-border rounded-xl p-4 bg-amber-50">
+                        <span class="text-xs font-extrabold uppercase text-amber-900 block mb-1">2. KANDUNGAN SYARIAH (AYAT 5)</span>
+                        <p class="text-xs text-stone-800 leading-relaxed">
+                            Merupakan janji setia hamba untuk memurnikan ibadah hanya kepada Allah (<i>Iyyaka na'budu</i>) dan hanya memohon pertolongan kepada-Nya (<i>Iyyaka nasta'in</i>).
+                        </p>
+                    </div>
+                    <div class="mag-border rounded-xl p-4 bg-indigo-50">
+                        <span class="text-xs font-extrabold uppercase text-indigoMag block mb-1">3. KANDUNGAN AKHLAK & SEJARAH (AYAT 6–7)</span>
+                        <p class="text-xs text-stone-800 leading-relaxed">
+                            Permohonan bimbingan menuju jalan hidup yang lurus (<i>Shirathal Mustaqim</i>), yaitu jalan orang-orang saleh yang diberi nikmat, bukan jalan orang yang dimurkai atau tersesat.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Verse-by-Verse Interactive Memorization Table -->
+                <div class="mag-border rounded-xl overflow-hidden">
+                    <div class="bg-paper px-4 py-3 border-b-2 border-ink flex flex-wrap justify-between items-center gap-2">
+                        <span class="font-extrabold text-xs uppercase tracking-wider text-ink">
+                            <i class="fa-solid fa-table-list mr-1.5 text-emeraldMag"></i>TABEL HAFALAN 7 AYAT SURAT AL-FATIHAH (TEKS ARAB, LATIN, ARTI TEPAT, & INTISARI)
+                        </span>
+                        <button onclick="copySectionText('alfatihah-table')" class="no-print text-xs font-bold text-emeraldMag hover:underline">
+                            <i class="fa-regular fa-copy mr-1"></i>Salin Seluruh Terjemahan
+                        </button>
+                    </div>
+
+                    <div id="alfatihah-table" class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-stone-900 text-paper text-xs uppercase tracking-wider">
+                                    <th class="p-3.5 w-14 text-center border-r border-stone-700">Ayat</th>
+                                    <th class="p-3.5 w-1/3 border-r border-stone-700 text-right">Teks Arab & Transliterasi Latin</th>
+                                    <th class="p-3.5 w-1/3 border-r border-stone-700">Arti Bahasa Indonesia (Wajib Tepat)</th>
+                                    <th class="p-3.5">Kandungan Pokok</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y-2 divide-stone-200 text-sm">
+                                <!-- Ayat 1 -->
+                                <tr class="hover:bg-amber-50/60 transition">
+                                    <td class="p-3.5 font-serif font-black text-lg text-center text-emeraldMag">1</td>
+                                    <td class="p-3.5 text-right">
+                                        <p class="arabic-text text-2xl font-bold text-ink" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+                                        <p class="text-xs italic text-stone-600 mt-1">Bismillaahir-rahmaanir-rahiim</p>
+                                    </td>
+                                    <td class="p-3.5 font-semibold text-ink answer-block">
+                                        "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
+                                    </td>
+                                    <td class="p-3.5 text-xs text-stone-700">
+                                        Memulai setiap perbuatan baik dengan menyebut nama Allah dan mengingat kasih sayang-Nya.
+                                    </td>
+                                </tr>
+                                <!-- Ayat 2 -->
+                                <tr class="bg-stone-50/70 hover:bg-amber-50/60 transition">
+                                    <td class="p-3.5 font-serif font-black text-lg text-center text-emeraldMag">2</td>
+                                    <td class="p-3.5 text-right">
+                                        <p class="arabic-text text-2xl font-bold text-ink" dir="rtl">اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ</p>
+                                        <p class="text-xs italic text-stone-600 mt-1">Al-hamdu lillaahi rabbil-'aalamiin</p>
+                                    </td>
+                                    <td class="p-3.5 font-semibold text-ink answer-block">
+                                        "Segala puji bagi Allah, Tuhan seluruh alam,"
+                                    </td>
+                                    <td class="p-3.5 text-xs text-stone-700">
+                                        <i>Tauhid Rububiyah</i>: Bersyukur kepada Allah sebagai Pencipta, Pemilik, dan Pemelihara alam semesta.
+                                    </td>
+                                </tr>
+                                <!-- Ayat 3 -->
+                                <tr class="hover:bg-amber-50/60 transition">
+                                    <td class="p-3.5 font-serif font-black text-lg text-center text-emeraldMag">3</td>
+                                    <td class="p-3.5 text-right">
+                                        <p class="arabic-text text-2xl font-bold text-ink" dir="rtl">الرَّحْمٰنِ الرَّحِيْمِ</p>
+                                        <p class="text-xs italic text-stone-600 mt-1">Ar-rahmaanir-rahiim</p>
+                                    </td>
+                                    <td class="p-3.5 font-semibold text-ink answer-block">
+                                        "Yang Maha Pengasih, Maha Penyayang,"
+                                    </td>
+                                    <td class="p-3.5 text-xs text-stone-700">
+                                        Penegasan sifat rahmat Allah yang meliputi seluruh makhluk di dunia (<i>Ar-Rahman</i>) dan orang beriman di akhirat (<i>Ar-Rahim</i>).
+                                    </td>
+                                </tr>
+                                <!-- Ayat 4 -->
+                                <tr class="bg-stone-50/70 hover:bg-amber-50/60 transition">
+                                    <td class="p-3.5 font-serif font-black text-lg text-center text-emeraldMag">4</td>
+                                    <td class="p-3.5 text-right">
+                                        <p class="arabic-text text-2xl font-bold text-ink" dir="rtl">مٰلِكِ يَوْمِ الدِّيْنِ</p>
+                                        <p class="text-xs italic text-stone-600 mt-1">Maaliki yaumid-diin</p>
+                                    </td>
+                                    <td class="p-3.5 font-semibold text-ink answer-block">
+                                        "Pemilik hari pembalasan."
+                                    </td>
+                                    <td class="p-3.5 text-xs text-stone-700">
+                                        Keyakinan adanya Hari Akhir tempat seluruh amal perbuatan manusia diadili secara mutlak.
+                                    </td>
+                                </tr>
+                                <!-- Ayat 5 -->
+                                <tr class="hover:bg-amber-50/60 transition">
+                                    <td class="p-3.5 font-serif font-black text-lg text-center text-emeraldMag">5</td>
+                                    <td class="p-3.5 text-right">
+                                        <p class="arabic-text text-2xl font-bold text-ink" dir="rtl">اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُ</p>
+                                        <p class="text-xs italic text-stone-600 mt-1">Iyyaaka na'budu wa iyyaaka nasta'iin</p>
+                                    </td>
+                                    <td class="p-3.5 font-semibold text-ink answer-block">
+                                        "Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan."
+                                    </td>
+                                    <td class="p-3.5 text-xs text-stone-700">
+                                        Inti <i>Syariah</i> dan <i>Tauhid Uluhiyah</i>: Mengikhlaskan ibadah hanya untuk Allah dan memadukan usaha dengan doa.
+                                    </td>
+                                </tr>
+                                <!-- Ayat 6 -->
+                                <tr class="bg-stone-50/70 hover:bg-amber-50/60 transition">
+                                    <td class="p-3.5 font-serif font-black text-lg text-center text-emeraldMag">6</td>
+                                    <td class="p-3.5 text-right">
+                                        <p class="arabic-text text-2xl font-bold text-ink" dir="rtl">اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَ</p>
+                                        <p class="text-xs italic text-stone-600 mt-1">Ihdinash-shiraathal-mustaqiim</p>
+                                    </td>
+                                    <td class="p-3.5 font-semibold text-ink answer-block">
+                                        "Tunjukilah kami jalan yang lurus,"
+                                    </td>
+                                    <td class="p-3.5 text-xs text-stone-700">
+                                        Permohonan hidayah (petunjuk agama Islam) agar selalu berada di jalan kebenaran dan akhlak mulia.
+                                    </td>
+                                </tr>
+                                <!-- Ayat 7 -->
+                                <tr class="hover:bg-amber-50/60 transition">
+                                    <td class="p-3.5 font-serif font-black text-lg text-center text-emeraldMag">7</td>
+                                    <td class="p-3.5 text-right">
+                                        <p class="arabic-text text-2xl font-bold text-ink" dir="rtl">صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَلَا الضَّاۤلِّيْنَ</p>
+                                        <p class="text-xs italic text-stone-600 mt-1">Shiraathal-ladziina an'amta 'alaihim ghairil-maghdhuubi 'alaihim wa ladh-dhaalliin</p>
+                                    </td>
+                                    <td class="p-3.5 font-semibold text-ink answer-block">
+                                        "(yaitu) jalan orang-orang yang telah Engkau beri nikmat kepadanya; bukan (jalan) mereka yang dimurkai, dan bukan (pula jalan) mereka yang sesat."
+                                    </td>
+                                    <td class="p-3.5 text-xs text-stone-700">
+                                        Meneladani para nabi, orang jujur, dan saleh; serta menjauhi sifat orang yang tahu ilmu tapi membangkang (dimurkai) atau beramal tanpa ilmu (sesat).
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <div id="toastBox" class="fixed bottom-5 right-5 z-50 hidden bg-ink text-paper px-4 py-3 rounded-xl mag-border shadow-lg text-xs font-bold flex items-center gap-2 no-print">
+        <i class="fa-solid fa-circle-check text-amber-400 text-base"></i>
+        <span id="toastMsg">Teks berhasil disalin!</span>
+    </div>
+
+    <footer class="border-t-2 border-ink bg-stone-900 text-paper py-8 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div>
+                <span class="font-serif font-black text-amber-400 text-base">UNPAM PRESS • EDISI KHUSUS UTS AGAMA ISLAM</span>
+                <p class="text-stone-400 mt-1">Disusun khusus untuk Nadhif Rahman Hakim (261011400542) • Teknik Informatika S1 (01TPLP012)</p>
+            </div>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-amber-400 text-ink font-extrabold px-4 py-2 rounded-lg hover:bg-amber-300 transition">
+                <i class="fa-solid fa-arrow-up mr-1"></i>Kembali ke Atas
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        let selfTestActive = false;
+
+        // Toggle Self-Test Mode (Blur/Hide Answers for Memorization Practice)
+        function toggleSelfTestMode() {
+            selfTestActive = !selfTestActive;
+            const answerBlocks = document.querySelectorAll('.answer-block');
+            const btn = document.getElementById('quizModeBtn');
+            const text = document.getElementById('quizModeText');
+            const icon = document.getElementById('quizModeIcon');
+
+            answerBlocks.forEach(block => {
+                if (selfTestActive) {
+                    block.classList.add('blur-md', 'select-none', 'cursor-pointer', 'transition');
+                    block.title = 'Klik untuk mengintip jawaban';
+                    block.onclick = function() {
+                        this.classList.toggle('blur-md');
+                    };
+                } else {
+                    block.classList.remove('blur-md', 'select-none', 'cursor-pointer');
+                    block.title = '';
+                    block.onclick = null;
+                }
+            });
+
+            if (selfTestActive) {
+                btn.classList.replace('bg-amber-300', 'bg-coralMag');
+                btn.classList.replace('text-ink', 'text-white');
+                text.textContent = 'Mode Uji Hafalan: ON (Klik Teks untuk Intip)';
+                icon.className = 'fa-solid fa-eye';
+                showToast('Mode Uji Hafalan Aktif! Jawaban diburamkan agar Anda bisa latihan mengingat.');
+            } else {
+                btn.classList.replace('bg-coralMag', 'bg-amber-300');
+                btn.classList.replace('text-white', 'text-ink');
+                text.textContent = 'Mode Uji Hafalan: OFF';
+                icon.className = 'fa-solid fa-eye-slash';
+                showToast('Mode Baca Normal Aktif.');
+            }
+        }
+
+        // Update Memorization Progress Bar
+        function updateProgress() {
+            const checks = document.querySelectorAll('.topic-check');
+            let completed = 0;
+            checks.forEach(c => { if (c.checked) completed++; });
+            const percent = Math.round((completed / checks.length) * 100);
+
+            document.getElementById('progressCounter').textContent = `${completed} / ${checks.length} Selesai (${percent}%)`;
+            document.getElementById('progressBar').style.width = `${percent}%`;
+
+            if (completed === checks.length) {
+                showToast('Luar biasa! Anda telah menguasai seluruh 6 indikator UTS Agama Islam.');
+            }
+        }
+
+        // Filter Spreads by Keyword
+        function filterContent() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const spreads = document.querySelectorAll('.searchable-spread');
+
+            spreads.forEach(spread => {
+                const content = spread.innerText.toLowerCase();
+                if (!query || content.includes(query)) {
+                    spread.style.display = '';
+                } else {
+                    spread.style.display = 'none';
+                }
+            });
+        }
+
+        // Copy Answer Text using iFrame-safe execCommand
+        function copySectionText(elementId) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+
+            const tempArea = document.createElement('textarea');
+            tempArea.value = el.innerText;
+            document.body.appendChild(tempArea);
+            tempArea.select();
+            try {
+                document.execCommand('copy');
+                showToast('Jawaban berhasil disalin ke papan klip!');
+            } catch (err) {
+                showToast('Gagal menyalin teks.');
+            }
+            document.body.removeChild(tempArea);
+        }
+
+        // Show Custom Non-Blocking Toast Message
+        function showToast(message) {
+            const toast = document.getElementById('toastBox');
+            const msg = document.getElementById('toastMsg');
+            msg.textContent = message;
+            toast.classList.remove('hidden');
+            clearTimeout(window.toastTimer);
+            window.toastTimer = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3200);
+        }
+    </script>
+</body>
+</html>
