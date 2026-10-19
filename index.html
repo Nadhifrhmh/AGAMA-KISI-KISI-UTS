@@ -25,7 +25,8 @@
                         emeraldMag: '#0B4F3F',
                         goldMag: '#D97706',
                         coralMag: '#E11D48',
-                        indigoMag: '#312E81'
+                        indigoMag: '#312E81',
+                        techBlue: '#1E3A8A'
                     }
                 }
             }
@@ -68,6 +69,15 @@
             font-family: 'Amiri', serif;
             line-height: 2.1;
         }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         /* Print PDF Optimization */
         @media print {
             body {
@@ -89,48 +99,55 @@
                 display: block !important;
                 opacity: 1 !important;
             }
+            .answer-block {
+                filter: none !important;
+                user-select: auto !important;
+            }
         }
     </style>
 </head>
 <body class="selection:bg-amber-300 selection:text-ink">
 
+    <!-- Sticky Navigation Bar -->
     <nav class="sticky top-0 z-50 bg-paper/95 backdrop-blur-md border-b-2 border-ink no-print">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
-            <div class="flex items-center gap-3">
-                <span class="bg-ink text-paper font-serif font-black px-3 py-1 text-lg tracking-wider rounded">UNPAM PRESS</span>
-                <span class="hidden md:inline-block text-xs font-bold uppercase tracking-widest text-emeraldMag border border-emeraldMag px-2.5 py-1 rounded-full">
-                    Edisi UTS Ganjil 2026/2027
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[58px] py-2 flex items-center justify-between gap-2 sm:gap-4">
+            <!-- Brand -->
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <span class="bg-ink text-paper font-serif font-black px-2.5 py-1 text-base tracking-wider rounded whitespace-nowrap">UNPAM PRESS</span>
+                <span class="hidden xl:inline-block text-[11px] font-extrabold uppercase tracking-widest text-emeraldMag border border-emeraldMag px-2.5 py-1 rounded-full whitespace-nowrap">
+                    Edisi UTS 2026/2027
                 </span>
             </div>
 
-            <!-- Quick Jump Links -->
-            <div class="hidden lg:flex items-center space-x-1 text-xs font-bold uppercase tracking-wider">
-                <a href="#contekan" class="px-3 py-1.5 rounded hover:bg-amber-200 transition">⚡ Contekan Kilat</a>
-                <a href="#edisi-1" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 1</a>
-                <a href="#edisi-2" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 2</a>
-                <a href="#edisi-3" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 3</a>
-                <a href="#edisi-4" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 4</a>
-                <a href="#edisi-5" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Soal 5</a>
-                <a href="#edisi-b" class="px-2.5 py-1.5 rounded hover:bg-emerald-100 transition">Al-Fatihah</a>
+            <!-- Quick Jump Links (Always single line, scrollable smoothly if screen is compact) -->
+            <div class="hidden lg:flex items-center space-x-1 text-xs font-bold uppercase tracking-wider overflow-x-auto no-scrollbar shrink py-1">
+                <a href="#contekan" class="px-2.5 py-1.5 rounded hover:bg-amber-200 transition whitespace-nowrap shrink-0">⚡ Contekan</a>
+                <a href="#edisi-1" class="px-2 py-1.5 rounded hover:bg-emerald-100 transition whitespace-nowrap shrink-0">Soal 1</a>
+                <a href="#edisi-2" class="px-2 py-1.5 rounded hover:bg-emerald-100 transition whitespace-nowrap shrink-0">Soal 2</a>
+                <a href="#edisi-3" class="px-2 py-1.5 rounded hover:bg-emerald-100 transition whitespace-nowrap shrink-0">Soal 3</a>
+                <a href="#edisi-4" class="px-2 py-1.5 rounded hover:bg-emerald-100 transition whitespace-nowrap shrink-0">Soal 4</a>
+                <a href="#edisi-5" class="px-2 py-1.5 rounded hover:bg-emerald-100 transition whitespace-nowrap shrink-0">Soal 5</a>
+                <a href="#edisi-b" class="px-2 py-1.5 rounded hover:bg-emerald-100 transition whitespace-nowrap shrink-0">Al-Fatihah</a>
             </div>
 
-            <!-- Action Controls -->
-            <div class="flex items-center gap-2">
-                <button id="quizModeBtn" onclick="toggleSelfTestMode()" class="mag-border mag-shadow-sm bg-amber-300 hover:bg-amber-400 text-ink font-bold text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 transition">
+            <!-- Action Controls (Fixed width, never wrap) -->
+            <div class="flex items-center gap-2 shrink-0">
+                <button id="quizModeBtn" onclick="toggleSelfTestMode()" class="mag-border mag-shadow-sm bg-amber-300 hover:bg-amber-400 text-ink font-bold text-xs px-2.5 sm:px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition shrink-0 whitespace-nowrap">
                     <i class="fa-solid fa-eye-slash" id="quizModeIcon"></i>
-                    <span id="quizModeText">Mode Uji Hafalan: OFF</span>
+                    <span id="quizModeText">Mode Uji: OFF</span>
                 </button>
-                <button onclick="window.print()" class="mag-border mag-shadow-sm bg-emeraldMag hover:bg-emerald-900 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition">
+                <button onclick="window.print()" class="mag-border mag-shadow-sm bg-emeraldMag hover:bg-emerald-900 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition shrink-0 whitespace-nowrap">
                     <i class="fa-solid fa-file-pdf"></i>
-                    <span class="hidden sm:inline">Cetak / Simpan PDF</span>
+                    <span class="hidden sm:inline">Cetak PDF</span>
                 </button>
             </div>
         </div>
     </nav>
 
+    <!-- Magazine Masthead & Header -->
     <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-10">
         <!-- Top Issue Bar -->
-        <div class="border-y-2 border-ink py-2 flex flex-wrap justify-between items-center text-xs font-extrabold uppercase tracking-widest gap-2 mb-6">
+        <div class="border-y-2 border-ink py-2 flex flex-wrap justify-between items-center text-[11px] sm:text-xs font-extrabold uppercase tracking-widest gap-2 mb-6">
             <span>VOL. 01 • NO. 01 • PANDUAN MASTER KISI-KISI UTS</span>
             <span class="text-emeraldMag">MATA KULIAH: AGAMA ISLAM (2 SKS) • REGULER A</span>
             <span>6 SOAL • 90 MENIT (15 MENIT/SOAL)</span>
@@ -139,57 +156,57 @@
         <!-- Magazine Masthead Title -->
         <div class="text-center mb-8">
             <p class="text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] text-coralMag mb-2">
-                JURNAL PEMBELAJARAN & CONTEKAN STRATEGIS MAHASISWA
+                JURNAL PEMBELAJARAN &amp; CONTEKAN STRATEGIS MAHASISWA
             </p>
             <h1 class="font-serif font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-ink leading-none mb-4">
-                INSIGHT ISLAMI & SOLUSI KREATIF
+                INSIGHT ISLAMI &amp; SOLUSI KREATIF
             </h1>
             <p class="max-w-3xl mx-auto text-sm sm:text-base font-medium text-stone-700 leading-relaxed">
                 Integrasi nilai ajaran Islam yang <b>religius</b> (taat beragama) dan <b>humanis</b> (memedulikan kemanusiaan) sebagai landasan berpikir, bersikap, dan merancang solusi nyata atas persoalan kehidupan manusia.
             </p>
         </div>
 
-        <!-- Cover Grid: Hero Visual + Student Identity Card -->
+        <!-- Cover Grid: Hero Feature + Student Profile Card -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            <!-- Left Cover Feature (8 cols) -->
+            <!-- Left Hero Feature (8 cols) -->
             <div class="lg:col-span-8 mag-border mag-shadow rounded-2xl overflow-hidden bg-emeraldMag text-paper relative flex flex-col justify-between min-h-[380px]">
-                <!-- Pure Vector Editorial Background (Zero Lag, No Ugly Fallback Text) -->
+                <!-- Pure Vector Editorial Geometric Pattern -->
                 <div class="absolute inset-0 pointer-events-none overflow-hidden">
-                    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-amber-400/15 blur-2xl"></div>
-                    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-teal-300/10 blur-2xl"></div>
+                    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-amber-400/20 blur-3xl"></div>
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-teal-300/15 blur-3xl"></div>
                     <svg class="absolute inset-0 w-full h-full opacity-15" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <defs>
-                            <pattern id="islamicEditorialGrid" width="80" height="80" patternUnits="userSpaceOnUse">
-                                <path d="M40 0 L80 40 L40 80 L0 40 Z" fill="none" stroke="#F7F4EB" stroke-width="1"/>
-                                <circle cx="40" cy="40" r="18" fill="none" stroke="#FCD34D" stroke-width="1"/>
-                                <path d="M0 0 L80 80 M80 0 L0 80" stroke="#F7F4EB" stroke-width="0.5" stroke-dasharray="3,3"/>
+                            <pattern id="islamicEditorialGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+                                <path d="M30 0 L60 30 L30 60 L0 30 Z" fill="none" stroke="#F7F4EB" stroke-width="1"/>
+                                <circle cx="30" cy="30" r="12" fill="none" stroke="#FCD34D" stroke-width="0.8"/>
+                                <circle cx="30" cy="30" r="3" fill="#FCD34D"/>
                             </pattern>
                         </defs>
                         <rect width="100%" height="100%" fill="url(#islamicEditorialGrid)" />
                     </svg>
-                    <!-- Decorative Editorial Watermark Badge (Top Right Corner, Non-Colliding) -->
-                    <svg class="absolute right-6 top-16 w-40 h-40 text-amber-300/10 hidden sm:block" viewBox="0 0 200 200" fill="currentColor">
+                    <!-- Islamic 8-pointed star / Rub el Hizb geometric watermark (Non-colliding) -->
+                    <svg class="absolute right-6 top-14 w-44 h-44 text-amber-300/10 hidden sm:block" viewBox="0 0 200 200" fill="currentColor">
                         <polygon points="100,10 126,68 190,75 142,118 155,182 100,148 45,182 58,118 10,75 74,68" />
                     </svg>
                 </div>
 
                 <!-- Top Badges -->
-                <div class="relative z-10 p-6 sm:p-8 flex flex-wrap items-center justify-between gap-2 border-b border-white/15 bg-ink/20 backdrop-blur-xs">
+                <div class="relative z-10 p-6 sm:p-8 flex flex-wrap items-center justify-between gap-2 border-b border-white/15 bg-ink/30 backdrop-blur-sm">
                     <span class="bg-amber-400 text-ink font-extrabold text-xs uppercase px-3.5 py-1.5 rounded-full mag-border tracking-wide">
-                        <i class="fa-solid fa-star mr-1"></i>100% Akurat Sesuai Kisi-Kisi Resmi
+                        <i class="fa-solid fa-book-quran mr-1.5"></i>Standar Kurikulum TI UNPAM 2026/2027
                     </span>
                     <span class="bg-ink text-amber-300 text-xs font-extrabold px-3.5 py-1.5 rounded-full border border-amber-300/40 tracking-wide">
                         5 Soal Kasus (Level C6) + 1 Hafalan (Level C1)
                     </span>
                 </div>
 
-                <!-- Center/Bottom Editorial Headline -->
-                <div class="relative z-10 p-6 sm:p-8 flex-grow flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/40 to-transparent">
-                    <div class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.2em] text-emerald-200 mb-2">
+                <!-- Headline & Key Metrics -->
+                <div class="relative z-10 p-6 sm:p-8 flex-grow flex flex-col justify-end bg-gradient-to-t from-ink/95 via-ink/50 to-transparent">
+                    <div class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.2em] text-emerald-300 mb-2">
                         <span class="w-6 h-0.5 bg-amber-400 inline-block"></span>
                         <span>FOKUS UTAMA • EDISI KHUSUS MAHASISWA TI UNPAM</span>
                     </div>
-                    <h2 class="font-serif font-black text-2xl sm:text-4xl lg:text-[40px] text-amber-300 leading-[1.15] tracking-tight mb-6 max-w-2xl">
+                    <h2 class="font-serif font-black text-2xl sm:text-4xl lg:text-[38px] text-amber-300 leading-[1.15] tracking-tight mb-6 max-w-2xl">
                         Strategi Lulus Nilai A: Pahami Konsep Dasar, Hafalkan Dalil Kunci, &amp; Rancang Solusi Logis.
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-white/20 text-xs sm:text-sm">
@@ -198,11 +215,11 @@
                             <span class="text-stone-200 font-medium">Uraian Analisis &amp; Kreasi Solusi (C6)</span>
                         </div>
                         <div class="bg-white/5 p-3 rounded-xl border border-white/10">
-                            <span class="block text-amber-300 font-extrabold text-xs tracking-wider uppercase mb-0.5">BAGIAN B (SOAL 6)</span>
+                            <span class="block text-sky-300 font-extrabold text-xs tracking-wider uppercase mb-0.5">BAGIAN B (SOAL 6)</span>
                             <span class="text-stone-200 font-medium">Hafalan &amp; Arti Q.S. Al-Fatihah (C1)</span>
                         </div>
                         <div class="bg-white/5 p-3 rounded-xl border border-white/10">
-                            <span class="block text-amber-300 font-extrabold text-xs tracking-wider uppercase mb-0.5">MANAJEMEN WAKTU</span>
+                            <span class="block text-emerald-300 font-extrabold text-xs tracking-wider uppercase mb-0.5">MANAJEMEN WAKTU</span>
                             <span class="text-stone-200 font-medium">90 Menit Total (15 Menit / Nomor)</span>
                         </div>
                     </div>
@@ -244,13 +261,13 @@
                             <span class="font-bold text-ink">REGULER A / 01TPLP012</span>
                         </div>
                         <div class="flex justify-between py-1">
-                            <span class="text-stone-500 font-medium">Periode & Status</span>
+                            <span class="text-stone-500 font-medium">Periode &amp; Status</span>
                             <span class="font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded text-xs">GANJIL 2026/2027 • AKTIF</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Progress Tracker Interactive -->
+                <!-- Interactive Progress Tracker -->
                 <div class="mt-5 pt-4 border-t-2 border-dashed border-ink no-print">
                     <div class="flex justify-between items-center text-xs font-extrabold mb-1.5">
                         <span>PROGRES HAFALAN MATERI</span>
@@ -281,7 +298,7 @@
                 <div class="no-print flex items-center gap-2">
                     <div class="relative">
                         <input type="text" id="searchInput" oninput="filterContent()" placeholder="Cari kata kunci / dalil..."
-                               class="mag-border rounded-lg px-3 py-2 text-xs font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-emeraldMag w-48 sm:w-60">
+                               class="mag-border rounded-lg px-3 py-2 text-xs font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-emeraldMag w-48 sm:w-64">
                         <i class="fa-solid fa-magnifying-glass absolute right-3 top-2.5 text-stone-400 text-xs"></i>
                     </div>
                 </div>
@@ -394,6 +411,7 @@
                 <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
                     <div class="mag-border rounded-xl overflow-hidden bg-emeraldMag relative group">
                         <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=900&q=80"
+                             loading="lazy" decoding="async"
                              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
                              alt="Tangan Menjaga Tanaman dan Bumi"
                              class="w-full h-56 object-cover">
@@ -412,6 +430,24 @@
                         <p class="text-sm text-stone-800 leading-relaxed dropcap">
                             Manusia diciptakan oleh Allah dari dua unsur utama: <b>unsur fisik dari saripati tanah</b> (Q.S. Al-Mu'minun: 12-14) dan <b>unsur ruh Ilahi</b> berupa akal pikiran serta hati nurani (Q.S. Shad: 71-72). Karena fisik manusia berasal dari bumi dan diberi akal, manusia diangkat menjadi <b>khalifah</b> (pemimpin, wakil pengelola, dan penjaga bumi), bukan pemilik mutlak yang bebas merusak lingkungan.
                         </p>
+                    </div>
+
+                    <!-- 3 Prinsip Etika Lingkungan Islam (Ekoteologi) -->
+                    <div class="bg-paper mag-border rounded-xl p-4">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-emeraldMag block mb-2">
+                            <i class="fa-solid fa-leaf mr-1.5 text-emerald-700"></i>3 PRINSIP ETIKA LINGKUNGAN ISLAM (EKOTEOLOGI)
+                        </span>
+                        <div class="space-y-1.5 text-xs text-stone-800">
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>1. At-Tawazun (Keseimbangan Ekosistem):</b> Allah menciptakan alam secara harmonis dan presisi (Q.S. Al-Mulk: 3). Merusak sungai melanggar sunatullah keseimbangan bumi.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>2. Al-Amanah &amp; Mas'uliyyah (Tanggung Jawab Pengelolaan):</b> Bumi bukan milik mutlak manusia, melainkan titipan yang wajib dipertanggungjawabkan di hadapan Allah.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>3. Larangan Al-Fasad (Anti-Destruksi Lingkungan):</b> Pengharaman segala tindakan eksploitasi dan polusi yang merusak kelestarian hidup (<b>Q.S. Al-A'raf: 56</b>).
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Dalil Box -->
@@ -465,10 +501,10 @@
 
                     <!-- Memory Hook -->
                     <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
-                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
-                        <div class="text-xs sm:text-sm text-ink">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink shrink-0"></i>
+                        <div class="text-xs sm:text-sm text-ink leading-relaxed">
                             <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
-                            Ingat rumus <b>"TANAH – KHALIFAH – BANK SAMPAH"</b>: Tubuh dari tanah (Hud: 61) $\rightarrow$ Mandat <i>khalifah</i> (Al-Baqarah: 30) $\rightarrow$ Alam rusak karena manusia (Ar-Rum: 41) $\rightarrow$ Solusi: Aplikasi Bank Sampah & Reboisasi.
+                            Ingat rumus <b>"TANAH – KHALIFAH – BANK SAMPAH"</b>: Tubuh dari tanah (Hud: 61) → Mandat <i>khalifah</i> (Al-Baqarah: 30) → Alam rusak karena manusia (Ar-Rum: 41) → Solusi: Aplikasi Bank Sampah &amp; Reboisasi.
                         </div>
                     </div>
                 </div>
@@ -496,6 +532,7 @@
                 <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
                     <div class="mag-border rounded-xl overflow-hidden bg-indigoMag">
                         <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=900&q=80"
+                             loading="lazy" decoding="async"
                              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
                              alt="Kompas Penunjuk Arah Hidup"
                              class="w-full h-56 object-cover">
@@ -524,6 +561,24 @@
                             </div>
                             <div class="p-2 bg-white rounded border border-stone-300">
                                 <b>4. Kebebasan:</b> Hak memilih tindakan, tapi tanpa aturan agama akan <i>menabrak hak orang lain (anarkis)</i>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Fungsi Vital Agama Mengatasi Krisis Modern -->
+                    <div class="bg-paper mag-border rounded-xl p-4">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-indigoMag block mb-2">
+                            <i class="fa-solid fa-shield-heart mr-1.5 text-coralMag"></i>3 FUNGSI VITAL AGAMA BAGI MANUSIA MODERN
+                        </span>
+                        <div class="space-y-1.5 text-xs text-stone-800">
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>1. Penjawab Kehampaan (Tujuan Hidup):</b> Mengingatkan bahwa hidup bukan kebetulan tanpa arti, melainkan amanah ibadah menuju keabadian.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>2. Kendali Etika Moral (Rem Ambisi):</b> Membatasi akal dan kebebasan dengan norma halal-haram agar tidak menghalalkan segala cara.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>3. Pemulih Ketenangan Batin (Solusi Stres):</b> Mengatasi kegelisahan batin lewat zikir, doa, dan tawakal (<b>Q.S. Ar-Ra'd: 28</b>).
                             </div>
                         </div>
                     </div>
@@ -578,10 +633,10 @@
                     </div>
 
                     <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
-                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
-                        <div class="text-xs sm:text-sm text-ink">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink shrink-0"></i>
+                        <div class="text-xs sm:text-sm text-ink leading-relaxed">
                             <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
-                            Ingat rumus <b>"4 MODAL TERBATAS – HAMPA & LIAR – 3 POLA HIDUP"</b>: Akal/Perasaan/Kehendak/Kebebasan terbatas $\rightarrow$ Tanpa agama jadi hampa & liar $\rightarrow$ Pola: Niat ibadah (Adz-Dzariyat: 56), Etika halal-haram, Usaha + Doa.
+                            Ingat rumus <b>"4 MODAL TERBATAS – HAMPA &amp; LIAR – 3 POLA HIDUP"</b>: Akal/Perasaan/Kehendak/Kebebasan terbatas → Tanpa agama jadi hampa &amp; liar → Pola: Niat ibadah (Adz-Dzariyat: 56), Etika halal-haram, Usaha + Doa.
                         </div>
                     </div>
                 </div>
@@ -609,6 +664,7 @@
                 <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
                     <div class="mag-border rounded-xl overflow-hidden bg-emeraldMag">
                         <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80"
+                             loading="lazy" decoding="async"
                              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
                              alt="Perencanaan Keuangan Pendidikan Bebas Riba"
                              class="w-full h-56 object-cover">
@@ -627,6 +683,24 @@
                         <p class="text-sm text-stone-800 leading-relaxed dropcap">
                             <b>Al-Qur'an</b> adalah sumber hukum pertama dan tertinggi dalam Islam. Di dalamnya terdapat aturan tegas yang mengharamkan <b>riba</b>, yaitu tambahan nilai tagihan pada pinjaman uang yang dipersyaratkan di awal sehingga mencekik peminjam. Dalam Islam, orang yang butuh biaya pendidikan harus ditolong dengan kelonggaran, bukan dijadikan ladang mencari keuntungan bunga.
                         </p>
+                    </div>
+
+                    <!-- 3 Bahaya Riba & Prinsip Ekonomi Islam -->
+                    <div class="bg-paper mag-border rounded-xl p-4">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-emeraldMag block mb-2">
+                            <i class="fa-solid fa-hand-holding-dollar mr-1.5 text-amber-600"></i>3 BAHAYA RIBA &amp; PRINSIP EKONOMI ISLAM
+                        </span>
+                        <div class="space-y-1.5 text-xs text-stone-800">
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>1. Kezaliman Finansial (Zulm):</b> Membebani pihak yang sedang terjepit kebutuhan dan memicu lingkaran utang berbunga yang mencekik.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>2. Hilangnya Berkah Harta (Q.S. Al-Baqarah: 276):</b> Bunga pinjaman tampak menguntungkan secara semu, namun memicu kehancuran ekonomi dan kecemasan jiwa.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>3. Semangat Ta'awun (Tolong-Menolong):</b> Pinjaman dalam Islam berorientasi sosial kebajikan (<i>Qardhul Hasan</i>), bukan komersialisasi utang.
+                            </div>
+                        </div>
                     </div>
 
                     <div class="bg-amber-50 border-2 border-amber-600 rounded-xl p-4">
@@ -679,10 +753,10 @@
                     </div>
 
                     <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
-                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
-                        <div class="text-xs sm:text-sm text-ink">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink shrink-0"></i>
+                        <div class="text-xs sm:text-sm text-ink leading-relaxed">
                             <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
-                            Ingat rumus <b>"HARAM RIBA – 3 JALAN HALAL"</b>: Riba haram & menindas (Al-Baqarah: 275) $\rightarrow$ Solusi: 1. Cicilan Kampus 0% (Al-Baqarah: 280), 2. Pinjaman Tanpa Bunga (<i>Qardhul Hasan</i>), 3. Beasiswa/Zakat + Kerja Halal.
+                            Ingat rumus <b>"HARAM RIBA – 3 JALAN HALAL"</b>: Riba haram &amp; menindas (Al-Baqarah: 275) → Solusi: 1. Cicilan Kampus 0% (Al-Baqarah: 280), 2. Pinjaman Tanpa Bunga (<i>Qardhul Hasan</i>), 3. Beasiswa/Zakat + Kerja Halal.
                         </div>
                     </div>
                 </div>
@@ -710,6 +784,7 @@
                 <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
                     <div class="mag-border rounded-xl overflow-hidden bg-coralMag">
                         <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80"
+                             loading="lazy" decoding="async"
                              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
                              alt="Laboratorium Medis dan Bioetika Islam"
                              class="w-full h-56 object-cover">
@@ -734,6 +809,27 @@
                         </div>
                         <div class="p-2.5 bg-white rounded border border-stone-300">
                             <b>3. Maslahah Mursalah:</b> Menetapkan hukum berdasarkan pertimbangan manfaat umum dan pencegahan bahaya demi menjaga tujuan syariat (khususnya menjaga keturunan / <i>Hifzhun Nasl</i>).
+                        </div>
+                    </div>
+
+                    <!-- 4 Rukun Qiyas Kasus Sperma Donor -->
+                    <div class="bg-paper mag-border rounded-xl p-4">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-coralMag block mb-2">
+                            <i class="fa-solid fa-dna mr-1.5 text-coralMag"></i>4 RUKUN QIYAS KASUS SPERMA DONOR
+                        </span>
+                        <div class="space-y-1.5 text-xs text-stone-800">
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>1. Asal (Kasus Pokok):</b> Zina yang telah tegas diharamkan dalam <b>Q.S. Al-Isra Ayat 32</b>.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>2. Far'u (Kasus Cabang):</b> Pembuahan sel telur menggunakan sperma donor pria asing di luar nikah.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>3. Hukm Asal (Ketetapan Syariat):</b> Berstatus haram mutlak karena mendatangkan mafsadat besar.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>4. 'Illat (Alasan Hukum yang Sama):</b> Tercampurnya garis nasab (<i>ikhtilath al-ansab</i>) tanpa akad nikah sah.
+                            </div>
                         </div>
                     </div>
 
@@ -791,10 +887,10 @@
                     </div>
 
                     <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
-                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
-                        <div class="text-xs sm:text-sm text-ink">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink shrink-0"></i>
+                        <div class="text-xs sm:text-sm text-ink leading-relaxed">
                             <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
-                            Ingat rumus <b>"QIYAS ZINA – RUSAK NASAB – BAYI TABUNG SAH"</b>: <i>Qiyas</i> = satu sifat dengan zina (Haram) $\rightarrow$ <i>Maslahah</i> = Bahaya rusak keturunan (<i>nasab</i>) lebih besar $\rightarrow$ Solusi: Bayi tabung murni suami-istri sah atau adopsi syar'i.
+                            Ingat rumus <b>"QIYAS ZINA – RUSAK NASAB – BAYI TABUNG SAH"</b>: <i>Qiyas</i> = satu sifat dengan zina (Haram) → <i>Maslahah</i> = Bahaya rusak keturunan (<i>nasab</i>) lebih besar → Solusi: Bayi tabung murni suami-istri sah atau adopsi syar'i.
                         </div>
                     </div>
                 </div>
@@ -822,6 +918,7 @@
                 <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
                     <div class="mag-border rounded-xl overflow-hidden bg-emeraldMag">
                         <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=900&q=80"
+                             loading="lazy" decoding="async"
                              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
                              alt="Pohon Rindang Analogi Akidah Syariah Akhlak"
                              class="w-full h-52 object-cover">
@@ -849,6 +946,24 @@
                         <div class="flex items-center gap-3 p-2 bg-white rounded border border-stone-300">
                             <span class="w-7 h-7 rounded bg-indigoMag text-white font-bold flex items-center justify-center shrink-0">3</span>
                             <div><b>AKHLAK (Buah / Budi Pekerti):</b> Perilaku jujur, adil, dan santun kepada sesama sebagai bukti nyata ibadah.</div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Tingkatan Penghayatan Agama (Hadis Jibril) -->
+                    <div class="bg-paper mag-border rounded-xl p-4">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-emeraldMag block mb-2">
+                            <i class="fa-solid fa-shield-halved mr-1.5 text-emeraldMag"></i>3 TINGKATAN AGAMA: PENYATU IBADAH &amp; AKHLAK
+                        </span>
+                        <div class="space-y-1.5 text-xs text-stone-800">
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>1. Tingkat Islam (Dimensi Syariah / Fisik):</b> Melaksanakan ibadah lahiriah. Tanpa ruh batin, salat berisiko menjadi sebatas gerakan tubuh formalitas.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>2. Tingkat Iman (Dimensi Akidah / Batin):</b> Menghujamkan keyakinan 6 rukun iman ke dalam hati sebagai benteng pencegah maksiat saat tidak dilihat orang.
+                            </div>
+                            <div class="p-2 bg-white rounded border border-stone-300">
+                                <b>3. Tingkat Ihsan (Puncak Pengawasan Moral):</b> Beribadah seolah-olah melihat Allah, atau meyakini Dia senantiasa melihat kita. Inilah kunci moralitas sejati.
+                            </div>
                         </div>
                     </div>
 
@@ -906,10 +1021,10 @@
                     </div>
 
                     <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
-                        <i class="fa-solid fa-lightbulb text-2xl text-ink"></i>
-                        <div class="text-xs sm:text-sm text-ink">
+                        <i class="fa-solid fa-lightbulb text-2xl text-ink shrink-0"></i>
+                        <div class="text-xs sm:text-sm text-ink leading-relaxed">
                             <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
-                            Ingat rumus <b>"POHON ISLAM – IBADAH GERAK FISIK – SOLUSI IHSAN"</b>: Akidah (akar), Syariah (batang), Akhlak (buah) $\rightarrow$ Maksiat karena ibadah cuma formalitas fisik $\rightarrow$ Solusi: Sadar diawasi Allah (<i>Ihsan</i>) + Hayati makna salat (Al-Ankabut: 45) + Evaluasi diri (<i>Muhasabah</i>).
+                            Ingat rumus <b>"POHON ISLAM – IBADAH GERAK FISIK – SOLUSI IHSAN"</b>: Akidah (akar), Syariah (batang), Akhlak (buah) → Maksiat karena ibadah cuma formalitas fisik → Solusi: Sadar diawasi Allah (<i>Ihsan</i>) + Hayati makna salat (Al-Ankabut: 45) + Evaluasi diri (<i>Muhasabah</i>).
                         </div>
                     </div>
                 </div>
@@ -1079,6 +1194,15 @@
                         </table>
                     </div>
                 </div>
+
+                <!-- Memory Hook -->
+                <div class="bg-amber-300 mag-border rounded-xl p-4 flex items-center gap-3">
+                    <i class="fa-solid fa-lightbulb text-2xl text-ink shrink-0"></i>
+                    <div class="text-xs sm:text-sm text-ink leading-relaxed">
+                        <b>Jembatan Keledai (Kata Kunci Hafalan 5 Detik):</b><br>
+                        Ingat rumus <b>"AKIDAH – SYARIAH – AKHLAK"</b>: Ayat 1–4: Akidah (Kasih sayang &amp; Hari Pembalasan) → Ayat 5: Syariah (Ibadah murni &amp; Doa) → Ayat 6–7: Akhlak (Jalan lurus hamba yang diberi nikmat).
+                    </div>
+                </div>
             </div>
         </article>
 
@@ -1104,7 +1228,7 @@
     <script>
         let selfTestActive = false;
 
-        // Toggle Self-Test Mode (Blur/Hide Answers for Memorization Practice)
+        // Toggle Self-Test Mode (Blur/Hide Answers for Active Recall Practice)
         function toggleSelfTestMode() {
             selfTestActive = !selfTestActive;
             const answerBlocks = document.querySelectorAll('.answer-block');
@@ -1115,7 +1239,7 @@
             answerBlocks.forEach(block => {
                 if (selfTestActive) {
                     block.classList.add('blur-md', 'select-none', 'cursor-pointer', 'transition');
-                    block.title = 'Klik untuk mengintip jawaban';
+                    block.title = 'Klik untuk membuka atau menutup jawaban';
                     block.onclick = function() {
                         this.classList.toggle('blur-md');
                     };
@@ -1127,78 +1251,121 @@
             });
 
             if (selfTestActive) {
-                btn.classList.replace('bg-amber-300', 'bg-coralMag');
-                btn.classList.replace('text-ink', 'text-white');
-                text.textContent = 'Mode Uji Hafalan: ON (Klik Teks untuk Intip)';
-                icon.className = 'fa-solid fa-eye';
-                showToast('Mode Uji Hafalan Aktif! Jawaban diburamkan agar Anda bisa latihan mengingat.');
+                if (btn) {
+                    btn.classList.remove('bg-amber-300', 'hover:bg-amber-400', 'text-ink');
+                    btn.classList.add('bg-coralMag', 'hover:bg-rose-700', 'text-white');
+                }
+                if (text) text.textContent = 'Mode Uji: ON';
+                if (icon) icon.className = 'fa-solid fa-eye';
+                showToast('Mode Uji Hafalan Aktif! Jawaban diburamkan untuk melatih daya ingat.');
             } else {
-                btn.classList.replace('bg-coralMag', 'bg-amber-300');
-                btn.classList.replace('text-white', 'text-ink');
-                text.textContent = 'Mode Uji Hafalan: OFF';
-                icon.className = 'fa-solid fa-eye-slash';
+                if (btn) {
+                    btn.classList.remove('bg-coralMag', 'hover:bg-rose-700', 'text-white');
+                    btn.classList.add('bg-amber-300', 'hover:bg-amber-400', 'text-ink');
+                }
+                if (text) text.textContent = 'Mode Uji: OFF';
+                if (icon) icon.className = 'fa-solid fa-eye-slash';
                 showToast('Mode Baca Normal Aktif.');
             }
         }
 
-        // Update Memorization Progress Bar
-        function updateProgress() {
+        // Update & Persist Memorization Progress Bar
+        function updateProgress(showNotification = true) {
             const checks = document.querySelectorAll('.topic-check');
             let completed = 0;
             checks.forEach(c => { if (c.checked) completed++; });
-            const percent = Math.round((completed / checks.length) * 100);
+            const total = checks.length || 6;
+            const percent = Math.round((completed / total) * 100);
 
-            document.getElementById('progressCounter').textContent = `${completed} / ${checks.length} Selesai (${percent}%)`;
-            document.getElementById('progressBar').style.width = `${percent}%`;
+            const counter = document.getElementById('progressCounter');
+            const bar = document.getElementById('progressBar');
+            if (counter) counter.textContent = `${completed} / ${total} Selesai (${percent}%)`;
+            if (bar) bar.style.width = `${percent}%`;
 
-            if (completed === checks.length) {
-                showToast('Luar biasa! Anda telah menguasai seluruh 6 indikator UTS Agama Islam.');
+            try {
+                const states = Array.from(checks).map(c => c.checked);
+                localStorage.setItem('kisi_uts_agama_progress', JSON.stringify(states));
+            } catch (e) {}
+
+            if (showNotification && completed === total && total > 0) {
+                showToast('Luar biasa! Seluruh 6 indikator materi telah Anda kuasai 100%.');
             }
         }
 
-        // Filter Spreads by Keyword
+        // Restore Progress from LocalStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                const saved = localStorage.getItem('kisi_uts_agama_progress');
+                if (saved) {
+                    const states = JSON.parse(saved);
+                    const checks = document.querySelectorAll('.topic-check');
+                    checks.forEach((c, idx) => {
+                        if (states[idx] !== undefined) c.checked = states[idx];
+                    });
+                    updateProgress(false);
+                }
+            } catch (e) {}
+        });
+
+        // Instant Filter Spreads by Keyword (Zero-Lag textContent Check)
         function filterContent() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const spreads = document.querySelectorAll('.searchable-spread');
 
             spreads.forEach(spread => {
-                const content = spread.innerText.toLowerCase();
-                if (!query || content.includes(query)) {
-                    spread.style.display = '';
-                } else {
-                    spread.style.display = 'none';
-                }
+                const content = spread.textContent.toLowerCase();
+                spread.style.display = (!query || content.includes(query)) ? '' : 'none';
             });
         }
 
-        // Copy Answer Text using iFrame-safe execCommand
+        // High-Performance Clipboard Copy (Modern API + Safe Fallback)
         function copySectionText(elementId) {
             const el = document.getElementById(elementId);
             if (!el) return;
 
+            const textToCopy = (el.innerText || el.textContent).trim();
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showToast('Jawaban berhasil disalin ke papan klip!');
+                }).catch(() => {
+                    fallbackCopy(textToCopy);
+                });
+            } else {
+                fallbackCopy(textToCopy);
+            }
+        }
+
+        function fallbackCopy(text) {
             const tempArea = document.createElement('textarea');
-            tempArea.value = el.innerText;
+            tempArea.value = text;
+            tempArea.setAttribute('readonly', '');
+            tempArea.style.position = 'fixed';
+            tempArea.style.left = '-9999px';
+            tempArea.style.top = '0';
+            tempArea.style.opacity = '0';
             document.body.appendChild(tempArea);
+            tempArea.focus();
             tempArea.select();
             try {
-                document.execCommand('copy');
-                showToast('Jawaban berhasil disalin ke papan klip!');
+                const successful = document.execCommand('copy');
+                showToast(successful ? 'Jawaban berhasil disalin ke papan klip!' : 'Gagal menyalin teks.');
             } catch (err) {
                 showToast('Gagal menyalin teks.');
             }
             document.body.removeChild(tempArea);
         }
 
-        // Show Custom Non-Blocking Toast Message
+        // Show Non-Blocking Toast Message
         function showToast(message) {
             const toast = document.getElementById('toastBox');
             const msg = document.getElementById('toastMsg');
+            if (!toast || !msg) return;
             msg.textContent = message;
             toast.classList.remove('hidden');
             clearTimeout(window.toastTimer);
             window.toastTimer = setTimeout(() => {
                 toast.classList.add('hidden');
-            }, 3200);
+            }, 3000);
         }
     </script>
 </body>
